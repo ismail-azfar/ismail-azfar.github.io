@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ismail Azfar Portfolio</title>
+
+<meta name="description" content="Ismail Azfar, Computer Science at The University of Manchester. Projects in simulation, quant trading, AI and games. Open to graduate roles.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<meta property="og:title" content="Ismail Azfar | Portfolio">
+<meta property="og:description" content="Final-year Computer Science at The University of Manchester. AI systems, trading tools and products people use.">
+<meta property="og:image" content="img/rescue-scout.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23141A24'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='16' text-anchor='middle' fill='%23E0A84A'%3EIA%3C/text%3E%3C/svg%3E">
+<style>
+html{-webkit-text-size-adjust:100%}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}
+/* Subject: Ismail Azfar's projects and experience | Audience: graduate recruiters and engineers | Job of the page: show what he builds and get him contacted */
+/* Layout: a workbench index — rotor-strip hero, filterable project bench with demo frames, then a plain ledger of experience and stack. */
+:root{
+  --paper:#EDF0F4;
+  --panel:#F8F9FB;
+  --ink:#141A24;
+  --muted:#5A6474;
+  --rule:#CDD3DC;
+  --brass:#8A5A0C;
+  --brass-soft:#F1E3C8;
+  --slate:#26324A;
+  --live:#1E7A4F;
+  --wip:#9A5B0C;
+  --f-display:"Familjen Grotesk","Helvetica Neue",Arial,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0F131A;--panel:#161C26;--ink:#E6EAF0;--muted:#97A1B1;--rule:#2A3342;
+  --brass:#E0A84A;--brass-soft:#3A2D16;--slate:#C9D3E6;--live:#5FC795;--wip:#E3A44E;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0F131A;--panel:#161C26;--ink:#E6EAF0;--muted:#97A1B1;--rule:#2A3342;
+  --brass:#E0A84A;--brass-soft:#3A2D16;--slate:#C9D3E6;--live:#5FC795;--wip:#E3A44E;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.1}
+.mono{font-family:var(--f-mono)}
+.label{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.word{display:flex;gap:6px}
+video.demo{width:100%;object-fit:cover;background:var(--ink)}
+
+/* nav */
+nav{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:22px;flex-wrap:wrap}
+nav .mark{font-family:var(--f-mono);font-size:13px;font-weight:500}
+nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+nav a{text-decoration:none;font-size:14px;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+
+/* hero */
+.hero{padding-block:48px 56px;display:grid;gap:40px;position:relative;isolation:isolate;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);align-items:center}
+@media (max-width:900px){.hero{grid-template-columns:minmax(0,1fr)}}
+.hero::before{content:"";position:absolute;z-index:-1;inset:0 calc(-1 * max(16px,env(safe-area-inset-left,0px)));
+  background-image:linear-gradient(var(--rule) 1px,transparent 1px),linear-gradient(90deg,var(--rule) 1px,transparent 1px);background-size:32px 32px;background-position:center top;
+  -webkit-mask-image:radial-gradient(ellipse 75% 85% at 35% 45%,#000 30%,transparent 78%);mask-image:radial-gradient(ellipse 75% 85% at 35% 45%,#000 30%,transparent 78%);opacity:.75}
+.hero-main{display:grid;gap:28px;min-width:0}
+.glance{display:grid;gap:12px;min-width:0}
+.degree{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;padding:14px 16px;background:var(--panel);border:1px solid var(--rule);border-radius:8px}
+.degree .crest{width:72px;height:72px;max-width:100%;object-fit:cover;border-radius:6px;display:block}
+.degree .crest.empty{display:grid;place-items:center;background:var(--brass-soft);font:600 12px var(--f-mono);color:var(--brass);letter-spacing:.04em}
+.degree strong{font-family:var(--f-display);font-size:17px;font-weight:600;line-height:1.2;display:block}
+.degree span{font-size:14px;color:var(--muted)}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;border:1px solid var(--rule);border-radius:8px;overflow:hidden;background:var(--rule)}
+@media (max-width:460px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.tiles div{display:grid;gap:4px;align-content:start;padding:14px;background:var(--panel);min-width:0}
+.tiles b{font-family:var(--f-display);font-size:clamp(22px,2.6vw,28px);font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.tiles b.hi{color:var(--brass)}
+.tiles span{font:400 11px/1.35 var(--f-mono);letter-spacing:.03em;text-transform:uppercase;color:var(--muted)}
+.rotors{display:flex;gap:6px clamp(10px,2vw,22px);flex-wrap:wrap}
+.rotor{width:clamp(34px,7.6vw,72px);aspect-ratio:3/4;max-width:100%;display:grid;place-items:center;
+  font-family:var(--f-display);font-weight:700;font-size:clamp(24px,5.6vw,54px);
+  background:var(--panel);border:1px solid var(--rule);border-radius:6px;position:relative;color:var(--ink)}
+.rotor::before,.rotor::after{content:"";position:absolute;left:8%;right:8%;height:1px;background:var(--rule)}
+.rotor::before{top:14%}.rotor::after{bottom:14%}
+.rotor.gap{background:none;border:none;width:clamp(10px,2vw,22px)}
+.rotor.lit{color:var(--brass)}
+.hero .lede{font-size:clamp(19px,2.4vw,24px);max-width:36ch;line-height:1.45;margin:0}
+.hero .lede b{font-weight:600}
+.meta{display:flex;gap:10px 28px;flex-wrap:wrap}
+.meta div{display:grid;gap:2px}
+.meta span:last-child{font-size:15px}
+
+/* sections */
+section{padding-block:40px}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;border-top:1px solid var(--ink);padding-top:14px;margin-bottom:28px}
+.sec-head h2{font-size:clamp(28px,4vw,40px)}
+
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filters button{font:500 13px var(--f-mono);padding:7px 12px;border-radius:999px;border:1px solid var(--rule);background:transparent;color:var(--muted);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.filters button:hover{border-color:var(--ink);color:var(--ink)}
+.filters button[aria-pressed="true"]:hover{color:var(--paper)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+.proj{display:grid;grid-template-rows:auto 1fr;gap:16px;min-width:0}
+.proj.feature{grid-column:1/-1;grid-template-columns:1.25fr 1fr;grid-template-rows:auto;align-items:start;gap:28px}
+@media (max-width:760px){.proj.feature{grid-template-columns:1fr}}
+
+.demo{position:relative;aspect-ratio:16/9;max-width:100%;border-radius:8px;overflow:hidden;border:1px solid var(--rule);
+  background:var(--panel);display:block;text-decoration:none;color:var(--ink)}
+.demo canvas{position:absolute;inset:0;width:100%;height:100%}
+.demo .shot{position:absolute;inset:0;width:100%;height:100%;max-width:100%;object-fit:cover;object-position:top center;background:var(--panel)}
+.demo .tag{position:absolute;left:12px;top:12px;font:500 11px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;
+  background:var(--paper);border:1px solid var(--rule);padding:3px 8px;border-radius:4px}
+.demo .play{position:absolute;right:12px;bottom:12px;display:flex;align-items:center;gap:8px;font:500 12px var(--f-mono);
+  background:var(--paper);border:1px solid var(--rule);padding:6px 10px 6px 8px;border-radius:999px}
+.demo .play i{width:0;height:0;border-left:8px solid var(--brass);border-top:5px solid transparent;border-bottom:5px solid transparent}
+.demo.empty .play{color:var(--muted)}
+.demo.empty .play i{border-left-color:var(--muted)}
+a.demo:hover .play{border-color:var(--brass)}
+
+.body{display:grid;gap:10px;align-content:start;min-width:0}
+.body .row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.body h3{font-size:24px}
+.proj.feature .body h3{font-size:clamp(28px,3.4vw,38px)}
+.status{font:500 11px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.status::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.status.live{color:var(--live)}.status.wip{color:var(--wip)}.status.done{color:var(--muted)}
+.body p{margin:0;color:var(--ink);max-width:62ch}
+.stack{display:flex;gap:6px;flex-wrap:wrap;list-style:none;margin:4px 0 0;padding:0}
+.stack li{font:400 12px var(--f-mono);padding:2px 8px;border-radius:4px;background:var(--brass-soft);color:var(--ink)}
+.links{display:flex;gap:16px;flex-wrap:wrap;font-size:14px}
+.links a{color:var(--brass);text-decoration-thickness:1px;text-underline-offset:3px}
+.ctx{font:400 13px var(--f-mono);color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:6px 0 2px;padding-block:12px;border-block:1px solid var(--rule)}
+@media (max-width:520px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.stats div{display:grid;gap:2px}
+.stats b{font-family:var(--f-display);font-size:26px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1}
+.stats b.hi{color:var(--brass)}
+.stats span{font:400 11px var(--f-mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+
+/* ledger */
+.ledger{list-style:none;margin:0;padding:0}
+.ledger li{display:grid;grid-template-columns:140px 1fr;gap:8px 24px;padding-block:16px;border-bottom:1px solid var(--rule)}
+.ledger li:first-child{border-top:1px solid var(--rule)}
+@media (max-width:560px){.ledger li{grid-template-columns:1fr}}
+.ledger time{font:400 13px var(--f-mono);color:var(--muted);font-variant-numeric:tabular-nums;padding-top:3px}
+.ledger strong{font-family:var(--f-display);font-size:19px;font-weight:600}
+.ledger p{margin:4px 0 0;color:var(--muted);max-width:62ch}
+.certs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.certs li{display:grid;gap:4px;align-content:start;padding:14px 16px;border:1px solid var(--rule);border-radius:6px;background:var(--panel);min-width:0}
+.certs strong{font-family:var(--f-display);font-size:16px;font-weight:600;line-height:1.25}
+.certs .issuer{font-size:14px;color:var(--muted)}
+.certs .meta-row{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font:400 12px var(--f-mono);color:var(--muted);margin-top:4px}
+.certs a{color:var(--brass);text-underline-offset:3px}
+
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px}
+.cols h3{font-size:15px;font-family:var(--f-mono);font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.cols ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+
+.contact{display:grid;gap:18px;padding-block:24px 64px}
+.contact .big{font-family:var(--f-display);font-size:clamp(26px,5vw,52px);font-weight:600;word-break:break-all;user-select:all}
+.contact .actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{font:500 14px var(--f-mono);padding:10px 16px;border-radius:6px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer;text-decoration:none}
+.btn.ghost{background:transparent;color:var(--ink)}
+.contact-meta{display:flex;gap:10px 40px;flex-wrap:wrap}
+.contact-meta div{display:grid;gap:2px}
+.contact-meta span:last-child{font-family:var(--f-display);font-size:clamp(20px,3vw,26px);font-weight:600}
+.contact-meta .num{user-select:all;font-variant-numeric:tabular-nums}
+footer{padding-block:24px;border-top:1px solid var(--rule);font:400 12px var(--f-mono);color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav>
+  <span class="mark">ismail.azfar / portfolio</span>
+  <ul>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#stack">Stack</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://github.com/ismailazfar" target="_blank" rel="noopener">GitHub ↗</a></li>
+    <li><a href="https://www.linkedin.com/in/ismail-azfar/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <div class="hero-main">
+  <h1 class="sr-only">Ismail Azfar</h1>
+  <div class="rotors" id="rotors" aria-hidden="true"></div>
+  <p class="lede">Final-year Computer Science student at <b>The University of Manchester</b>. I build AI systems, trading tools and products people actually use. I founded <b>FutureFlow Tuition</b>, co-founded <b>Lumara</b>, and passed the FTMO evaluation to trade a funded account.</p>
+  <div class="meta">
+    <div><span class="label">Based in</span><span>Manchester, UK</span></div>
+    <div><span class="label">Graduating</span><span>BSc (Hons) CS, 2027</span></div>
+    <div><span class="label">Looking for</span><span>Graduate roles</span></div>
+  </div>
+  </div>
+  <aside class="glance" aria-label="At a glance">
+    <div class="degree">
+      <img class="crest" src="img/uom-logo.png" width="200" height="200" alt="The University of Manchester logo">
+      <div><strong>BSc (Hons) Computer Science</strong><span>The University of Manchester · graduating 2027</span></div>
+    </div>
+    <div class="tiles">
+      <div><b class="hi">2</b><span>Businesses founded</span></div>
+      <div><b class="hi">16.2%</b><span>Backtest return after costs</span></div>
+      <div><b>5/5</b><span>Casualties found by robot</span></div>
+      <div><b>$5.2k</b><span>FTMO trading rewards</span></div>
+      <div><b>3</b><span>Hackathons in 2026</span></div>
+      <div><b>12</b><span>Certifications</span></div>
+    </div>
+  </aside>
+</header>
+
+<section id="work">
+  <div class="sec-head">
+    <h2>Selected work</h2>
+    <div class="filters" role="group" aria-label="Filter projects">
+      <button type="button" id="f-all" data-f="all" aria-pressed="true">All</button>
+      <button type="button" id="f-software" data-f="software" aria-pressed="false">Software</button>
+      <button type="button" id="f-quant" data-f="quant" aria-pressed="false">Quant</button>
+      <button type="button" id="f-ai" data-f="ai" aria-pressed="false">AI / Hackathons</button>
+      <button type="button" id="f-games" data-f="games" aria-pressed="false">Games</button>
+      <button type="button" id="f-ventures" data-f="ventures" aria-pressed="false">Ventures</button>
+    </div>
+  </div>
+
+  <div class="grid" id="grid">
+
+    <article class="proj feature" data-cat="software">
+      <div class="demo empty" data-art="rotor"><canvas></canvas><span class="tag">Final-year project</span><span class="play"><i></i>Demo coming soon</span></div>
+      <div class="body">
+        <div class="row"><span class="ctx">2026 – 27 · 40-credit dissertation</span><span class="status wip">In progress</span></div>
+        <h3>Enigma Machine Simulator</h3>
+        <p>An interactive web simulator of the Enigma cipher machine. Instead of only mapping letters, it models the electromechanical path: current flows from a key through the plugboard, three rotors and the reflector, then back out to a lamp, and you can watch each hop as it happens.</p>
+        <ul class="stack"><li>Next.js</li><li>TypeScript</li><li>Tailwind CSS</li><li>Circuit simulation</li></ul>
+      </div>
+    </article>
+
+    <article class="proj feature" data-cat="ai" data-video="https://youtu.be/T4TPnStSTC0">
+      <div class="demo empty" data-art="risk"><img class="shot" src="img/early-warning.jpg" width="720" height="450" alt="Ismail presenting the early-warning dashboard on a screen, pointing at a customer's rising missed-rent risk chart"><span class="tag">IBM Z Datathon 2026</span><span class="play"><i></i>Demo coming soon</span></div>
+      <div class="body">
+        <div class="row"><span class="ctx">2026 · Team of four · 24 hours</span><span class="status done">Shipped</span></div>
+        <h3>AI Early-Warning System</h3>
+        <p>Problem debt shows up in bank data weeks before someone misses rent: a falling balance, payday loans, bounced bills. This system spots it early. An XGBoost model scores each customer's risk every week and explains why they were flagged, what-if scenarios show which changes would lower the risk, and IBM Granite running locally writes a supportive action plan with safety rules so it never suggests more borrowing and always points to free help. Everything runs on IBM LinuxONE, so financial data never leaves the machine.</p>
+        <div class="stats">
+          <div><b class="hi">98.6%</b><span>Warned before missing rent</span></div>
+          <div><b>11 wks</b><span>Median notice</span></div>
+          <div><b>1,000</b><span>Unseen test customers</span></div>
+          <div><b>24 h</b><span>Build time</span></div>
+        </div>
+        <ul class="stack"><li>Python</li><li>XGBoost</li><li>Explainable AI</li><li>IBM Granite</li><li>IBM LinuxONE</li></ul>
+        <div class="links"><a href="https://youtu.be/T4TPnStSTC0" target="_blank" rel="noopener">Watch the demo ↗</a></div>
+      </div>
+    </article>
+
+    <article class="proj feature" data-cat="ai" data-video="https://www.youtube.com/watch?v=nEB8PAOwE6M">
+      <div class="demo empty" data-art="scan"><img class="shot" src="img/rescue-scout.jpg" width="720" height="450" alt="Rescue Scout demo frame: the RC car beside its live camera feed and a mission log reading 'Door straight ahead, forward'"><span class="tag">Nebius × NVIDIA · Physical AI</span><span class="play"><i></i>Demo coming soon</span></div>
+      <div class="body">
+        <div class="row"><span class="ctx">2026 · Team of five · Built in under 10 days</span><span class="status done">Shipped</span></div>
+        <h3>Rescue Scout</h3>
+        <p>A cheap scout robot that goes into a building before firefighters do, finds people and reports where they are. The prototype is a toy RC car with one FPV camera and a £5 ultrasonic sensor, with no LiDAR and no map. NVIDIA Nemotron vision models on Nebius Token Factory read the camera and choose each move, a planner surveys the room and heads for open doors, and a ground-plane calibration turns the single camera into a distance sensor.</p>
+        <div class="stats">
+          <div><b class="hi">5/5</b><span>Casualties found in final runs</span></div>
+          <div><b>~3 cm</b><span>Range accuracy within 1.2 m</span></div>
+          <div><b>1</b><span>Camera, no LiDAR</span></div>
+          <div><b>&lt;10</b><span>Days, hardware to demo</span></div>
+        </div>
+        <p class="ctx">It found the casualty even when starting facing the wrong way, and left the room through an open door to spot a target in the hallway.</p>
+        <ul class="stack"><li>NVIDIA Nemotron</li><li>Nebius Token Factory</li><li>Vision-language models</li><li>Python</li><li>Embedded hardware</li></ul>
+        <div class="links"><a href="https://www.youtube.com/watch?v=nEB8PAOwE6M" target="_blank" rel="noopener">Watch the demo ↗</a></div>
+      </div>
+    </article>
+
+    <article class="proj feature" data-cat="games ai" data-video="https://youtu.be/GdtUvbLRCNg">
+      <div class="demo empty" data-art="cards"><img class="shot" src="img/tilt.jpg" width="720" height="376" alt="Tilt title screen: a red moon over a dark town and the words 'Night falls on Tilt'"><span class="tag">OxHack 2026</span><span class="play"><i></i>Demo coming soon</span></div>
+      <div class="body">
+        <div class="row"><span class="ctx">2026 · Team of two · Hackathon</span><span class="status done">Shipped</span></div>
+        <h3>Tilt</h3>
+        <p>A Mafia game played over a call against AI townsfolk who watch your face for tells. A lie-detection model trained on a published deception dataset feeds a Bayesian town: each AI player keeps a probability that each person is the mafia, trusts the detector only as far as it has proven itself on you, and votes to maximise the chance the mafia goes. Every character has its own ElevenLabs v4 voice with delivery cues, so the narrator whispers at night and players get sarcastic when they don't believe you.</p>
+        <div class="stats">
+          <div><b class="hi">94%</b><span>Mafia caught with clear tells (9% without detector)</span></div>
+          <div><b>42%→21%</b><span>Innocents voted out in placebo test</span></div>
+          <div><b>0.568</b><span>AUC on 172 unseen people</span></div>
+          <div><b>59%</b><span>Failed face-tracking frames we fixed</span></div>
+        </div>
+        <p class="ctx">A placebo test with tell-free players caught the AI finding signal in noise and the detector leaking players' roles mid-game. Both are fixed, and a test fails if the leak returns.</p>
+        <ul class="stack"><li>Computer vision</li><li>Bayesian inference</li><li>Model evaluation</li><li>ElevenLabs v4</li></ul>
+        <div class="links"><a href="https://youtu.be/GdtUvbLRCNg" target="_blank" rel="noopener">Watch the demo ↗</a></div>
+      </div>
+    </article>
+
+    <article class="proj feature" data-cat="quant">
+      <div class="demo empty" data-art="paths"><img class="shot" src="img/quant-monte-carlo-paths.jpg" width="1140" height="642" style="object-position:center" alt="Monte Carlo chart from the paper: a dense fan of 1,000 resampled equity paths with the actual strategy, buy and hold, and the average random path drawn over them"><span class="tag">Research paper</span><span class="play"><i></i>Demo coming soon</span></div>
+      <div class="body">
+        <div class="row"><span class="ctx">July 2026 · Independent research</span><span class="status done">Paper written</span></div>
+        <h3>SPY Quantitative Backtesting Engine</h3>
+        <p>A Python backtester for 15-minute SPY data that works through three strategy families: moving-average trend filters, ICT Judas Swing liquidity sweeps and Fair Value Gap entries. Every trade pays a 0.01% cost, and results are stress-tested with 1,000-path Monte Carlo resampling. The best variant buys the first touch of a Fair Value Gap in the 09:30–11:00 session.</p>
+        <div class="stats">
+          <div><b class="hi">16.2%</b><span>Strategy, after costs</span></div>
+          <div><b>5.4%</b><span>Buy &amp; hold</span></div>
+          <div><b>86</b><span>Trades</span></div>
+          <div><b>68.6%</b><span>Win rate</span></div>
+        </div>
+        <p class="ctx">60-day test window, 1,560 fifteen-minute bars.</p>
+        <ul class="stack"><li>Python</li><li>pandas</li><li>NumPy</li><li>Matplotlib</li><li>yfinance</li><li>LaTeX</li></ul>
+        <div class="links"><a href="spy-backtesting-paper.pdf" target="_blank" rel="noopener">Read the paper (PDF) ↗</a><a href="https://github.com/ismailazfar/quant_thesis" target="_blank" rel="noopener">View code ↗</a></div>
+      </div>
+    </article>
+
+    <article class="proj" data-cat="quant software" data-file="video/trading-journal-demo.mp4" data-poster="video/trading-journal-poster.jpg">
+      <div class="demo empty" data-art="candles"><canvas></canvas><span class="tag">Web app</span><span class="play"><i></i>Demo coming soon</span></div>
+      <div class="body">
+        <div class="row"><span class="ctx">August 2025</span><span class="status done">Shipped</span></div>
+        <h3>Day Trader's Journal</h3>
+        <p>A free, lightweight trading journal I built when I couldn't find one that wasn't clunky. Log a trade with entry, exit and notes, and it works out P/L and keeps a running win rate. You can attach chart screenshots to each trade and sketch setups in a separate notepad, all beside a live TradingView chart. Everything is saved in the browser, so there's no account and no server.</p>
+        <p class="ctx">My first plan was a custom live chart. API rate limits, unreliable WebSockets and iframes that block screenshots sent me back to a simpler design that works.</p>
+        <ul class="stack"><li>JavaScript</li><li>Tailwind CSS</li><li>Local Storage</li><li>TradingView widgets</li></ul>
+      </div>
+    </article>
+
+    <article class="proj" data-cat="software">
+      <div class="demo empty" data-art="week"><img class="shot" src="img/let-em-cook-calendar.jpg" width="1280" height="790" alt="Let Em Cook's monthly meal-plan calendar with an Add Meal button on each day"><span class="tag">Team project</span><span class="play"><i></i>Demo coming soon</span></div>
+      <div class="body">
+        <div class="row"><span class="ctx">2025 · Team project · Front-end pages</span><span class="status done">Shipped</span></div>
+        <h3>Let Em Cook</h3>
+        <p>A meal planner that suggests recipes from what is already in your pantry, filters out your allergens and dietary preferences, and lays the week out on a calendar. Missing ingredients go straight onto a shopping list. I built the front-end pages in React and TypeScript.</p>
+        <ul class="stack"><li>React</li><li>TypeScript</li><li>PHP REST API</li><li>MySQL</li><li>Python</li></ul>
+        <div class="links"><a href="https://github.com/anayduggal/let-em-cook" target="_blank" rel="noopener">View code ↗</a></div>
+      </div>
+    </article>
+
+    <article class="proj" data-cat="ventures software">
+      <div class="demo empty" data-art="grid"><img class="shot" src="img/futureflow-home.jpg" width="1131" height="636" alt="FutureFlow Tuition homepage: headline 'Turn Cs/Bs into As/A*', a Start Here button and a free-call booking calendar"><span class="tag">Founder</span><span class="play"><i></i>Demo coming soon</span></div>
+      <div class="body">
+        <div class="row"><span class="ctx">Since December 2025</span><span class="status live">Live</span></div>
+        <h3>FutureFlow Tuition</h3>
+        <p>An online 1-on-1 tutoring and mentorship business. I built the site and the student experience behind it: dashboards, per-subject progress trackers, Notion student portals and automated onboarding.</p>
+        <ul class="stack"><li>Web</li><li>Notion</li><li>Automation</li></ul>
+        <div class="links"><a href="https://futureflowtuition.co.uk" target="_blank" rel="noopener">futureflowtuition.co.uk ↗</a></div>
+      </div>
+    </article>
+
+    <article class="proj" data-cat="ventures software ai">
+      <div class="demo empty" data-art="nodes"><img class="shot" src="img/lumara-academy.jpg" width="1300" height="731" alt="Lumara Web Dev Academy dashboard: 'Learn to build for the web, then build something real', with an overall progress card showing the next module"><span class="tag">Co-founder</span><span class="play"><i></i>Demo coming soon</span></div>
+      <div class="body">
+        <div class="row"><span class="ctx">Since September 2025</span><span class="status live">Active</span></div>
+        <h3>Lumara</h3>
+        <p>A studio building full-stack web applications and AI integrations for clients. We also built the Lumara Web Dev Academy, the platform behind our work-experience placement: a two-week course in HTML, CSS, JavaScript and Git across ten modules, with four small projects and a capstone reviewed by the team. Students track progress against a 58-item checklist, mentors and reviewers get their own areas, and each student finishes by building a page on a live client site.</p>
+        <ul class="stack"><li>Next.js</li><li>TypeScript</li><li>PostgreSQL</li><li>Prisma</li><li>Redis</li><li>Vercel</li><li>GitHub Actions</li><li>LLMs</li></ul>
+        <div class="links"><a href="https://lumarawebdev.com/" target="_blank" rel="noopener">lumarawebdev.com ↗</a><a href="https://lumaraonline.co.uk" target="_blank" rel="noopener">lumaraonline.co.uk ↗</a></div>
+      </div>
+    </article>
+
+
+    <article class="proj" data-cat="games">
+      <div class="demo empty" data-art="night"><img class="shot" src="img/mafia-night.jpg" width="640" height="360" alt="Mafia Night game thumbnail: five blocky characters in suits around a green card table under the words 'Who is the Mafia?'"><span class="tag">Published on Roblox</span><span class="play"><i></i>Demo coming soon</span></div>
+      <div class="body">
+        <div class="row"><span class="ctx">Roblox Studio · Live game</span><span class="status live">Live</span></div>
+        <h3>Mafia Night [VOICE CHAT]</h3>
+        <p>A social-deduction game set in a 1930s speakeasy. Each player is secretly dealt a role (Mafia, Doctor, Detective, Jester or Villager), then everyone talks, bluffs and votes over voice chat to find the Mafia before they take the town. At night the Mafia can whisper to each other, and the dead only hear the dead. Hosts can run private parties with a code and set the timers, role counts and Jester, or players can jump into Quick Play. I keep shipping updates, most recently the Jester role.</p>
+        <ul class="stack"><li>Luau</li><li>Roblox Studio</li><li>Client/server remotes</li></ul>
+        <div class="links"><a href="https://www.roblox.com/games/104646726876097/Mafia-Night" target="_blank" rel="noopener">Play on Roblox ↗</a></div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section id="experience">
+  <div class="sec-head"><h2>Experience</h2><span class="label">Current roles first</span></div>
+  <ul class="ledger">
+    <li><time>Dec 2025 – now</time><div><strong>Founder, FutureFlow Tuition</strong><p>Online one-to-one GCSE and A-level tuition and mentorship. I built the site and the student experience behind it: a booking flow, student dashboards, per-subject progress trackers, Notion student portals and automated onboarding.</p></div></li>
+    <li><time>Sep 2025 – now</time><div><strong>Co-Founder, Lumara</strong><p>Full-stack web and AI studio. Set up CI/CD with GitHub Actions and Vercel, applied LLMs with structured knowledge bases for explainable insights across trading, sports and automotive projects, and launched a multi-tenant trading journal platform with authentication and real-time analytics (Next.js, TypeScript, PostgreSQL, Prisma, Redis).</p></div></li>
+    <li><time>Now</time><div><strong>Maths Tutor, ILS</strong><p>Helping neurodivergent and autistic students get strong grades in GCSE and A-level Maths, adapting how each topic is taught to the way they learn.</p></div></li>
+    <li><time>2026 – now</time><div><strong>GCSE Maths Tutor, KA Tuition</strong><p>Online one-to-one GCSE Mathematics tutoring.</p></div></li>
+    <li><time>Oct 2026</time><div><strong>IBM Z Datathon, University of Manchester</strong><p>24 hours, team of four. Built an AI early-warning system on IBM LinuxONE that flagged 98.6% of unseen customers before they missed rent, with a median 11 weeks' notice.</p></div></li>
+    <li><time>Oct 2026</time><div><strong>OxHack, University of Oxford</strong><p>Built Tilt, a Mafia game with an AI lie detector and Bayesian AI players, competing for Hudson River Trading's data and predictions prize and MLH's Best Use of ElevenLabs.</p></div></li>
+    <li><time>Apr – Oct 2026</time><div><strong>Proprietary Trader, FTMO</strong><p>Passed both stages of the FTMO evaluation (Challenge and Verification) within strict drawdown limits and profit targets, then traded a six-figure funded account across indices and FX with fixed stop-losses and position sizing. Earned $5,215.34 in trading rewards by May 2026.</p></div></li>
+    <li><time>Oct – Dec 2025</time><div><strong>Data and AI Intern, IntElligence Tech Solutions</strong><p>London. Built an agentic retrieval-augmented generation (RAG) system and trained a forex time-series prediction model in TensorFlow on tick and historical market data.</p></div></li>
+    <li><time>2025</time><div><strong>Technology Spring Intern, Informa Markets</strong><p>London. AI-focused business proposals and market research.</p></div></li>
+    <li><time>Oct 2024</time><div><strong>Micro-Intern, RSK Group (Enactus UK)</strong><p>Built an AI tool that compares UK LiDAR and Sentinel satellite data over time to find coastal erosion and flood-risk hotspots, and presented it to the project team.</p></div></li>
+    <li><time>2024</time><div><strong>Work Experience, Fujitsu</strong><p>Server fail-log analysis in Python and pandas.</p></div></li>
+    <li><time>2023 – 2026</time><div><strong>Maths Tutor, Sky High Tuition</strong><p>Taught primary through A-level Further Maths and GCSE Physics.</p></div></li>
+    <li><time>2021</time><div><strong>Data Analytics Intern, The University of Manchester</strong><p>Wrote code for DNA sequencing analysis, working closely with the Biology department on a subject that was new to me.</p></div></li>
+    <li><time>Dec 2020 – Feb 2021</time><div><strong>App Developer, Ten X Developers</strong><p>Remote, during lockdown. Co-built a Flutter app that predicts how a person might age from a photo, and pitched the prototype and a business case to a company.</p></div></li>
+  </ul>
+</section>
+
+<section id="certifications">
+  <div class="sec-head"><h2>Certifications</h2><span class="label">Most recent first</span></div>
+  <ul class="certs">
+    <li><strong>Introduction to Portfolio Construction and Analysis with Python</strong><span class="issuer">EDHEC Business School (Coursera)</span><span class="meta-row"><span>Jul 2026</span><a href="https://www.coursera.org/account/accomplishments/records/TSL9I53WBRX2" target="_blank" rel="noopener">Verify ↗</a></span></li>
+    <li><strong>FTMO Overall Rewards: Bronze ($5,215.34)</strong><span class="issuer">FTMO</span><span class="meta-row"><span>18 May 2026</span><a href="certs/ftmo-rewards.jpg" target="_blank" rel="noopener">View certificate ↗</a></span></li>
+    <li><strong>FTMO Challenge: Passed</strong><span class="issuer">FTMO</span><span class="meta-row"><span>17 Apr 2026</span><a href="certs/ftmo-challenge.jpg" target="_blank" rel="noopener">View certificate ↗</a></span></li>
+    <li><strong>FTMO Verification: Passed</strong><span class="issuer">FTMO</span><span class="meta-row"><span>16 Apr 2026</span><a href="certs/ftmo-verification.jpg" target="_blank" rel="noopener">View certificate ↗</a></span></li>
+    <li><strong>Data Science Training and Internship</strong><span class="issuer">IntElligence Tech Solutions</span><span class="meta-row"><span>Dec 2025</span><a href="https://credsverse.com/credentials/91ca4f82-2cf0-4c5a-9bdf-3553cdd91909" target="_blank" rel="noopener">Verify ↗</a></span></li>
+    <li><strong>Career Catalyst Micro-Internship, powered by RSK</strong><span class="issuer">Enactus UK &amp; Ireland</span><span class="meta-row"><span>Oct 2024</span><a href="https://images.squarespace-cdn.com/content/62726b549e95bf2087fc2759/d8b5320e-d949-4298-94de-a697d21eb783/Ismail_Azfar.png?content-type=image%2Fpng" target="_blank" rel="noopener">Verify ↗</a></span></li>
+    <li><strong>CS50x: Introduction to Computer Science</strong><span class="issuer">Harvard University</span><span class="meta-row"><span>Aug 2024</span><a href="https://certificates.cs50.io/13f10683-99aa-4623-93f2-f6aeb672930f.png?size=letter" target="_blank" rel="noopener">Verify ↗</a></span></li>
+    <li><strong>Bank of America Job Simulation</strong><span class="issuer">Bank of America (Forage)</span><span class="meta-row"><span>Jul 2024</span><a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Bank%20of%20America/Hi8MJQE5T3MeTRWQR_Bank%20of%20America_aeT6N3Dm3zn4PTWnC_1720094478723_completion_certificate.pdf" target="_blank" rel="noopener">Verify ↗</a></span></li>
+    <li><strong>Software Engineering Job Simulation</strong><span class="issuer">JPMorganChase (Forage)</span><span class="meta-row"><span>Jun 2024</span><a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/J.P.%20Morgan/R5iK7HMxJGBgaSbvk_J.P.%20Morgan_aeT6N3Dm3zn4PTWnC_1719411314220_completion_certificate.pdf" target="_blank" rel="noopener">Verify ↗</a></span></li>
+    <li><strong>Developer and Technology Job Simulation</strong><span class="issuer">Accenture UK (Forage)</span><span class="meta-row"><span>Feb 2024</span><a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Accenture%20UK/3xnZEj9kfpoQKW885_Accenture%20UK_aeT6N3Dm3zn4PTWnC_1708370775069_completion_certificate.pdf" target="_blank" rel="noopener">Verify ↗</a></span></li>
+    <li><strong>Technical Virtual Experience</strong><span class="issuer">Fujitsu</span><span class="meta-row"><span>Feb 2024</span><a href="https://prosple.com/verifier?id=1b12eac0-cc3d-11ee-a323-edbd103f73d5" target="_blank" rel="noopener">Verify ↗</a></span></li>
+    <li><strong>Senior Maths Challenge: Gold</strong><span class="issuer">UKMT</span><span class="meta-row"><span>Feb 2023</span></span></li>
+  </ul>
+</section>
+
+<section id="stack">
+  <div class="sec-head"><h2>Stack &amp; education</h2></div>
+  <div class="cols">
+    <div><h3>Languages</h3><ul><li>Python</li><li>TypeScript / JavaScript</li><li>C / C++</li><li>Java</li><li>SQL (PostgreSQL)</li><li>Luau</li></ul></div>
+    <div><h3>Frameworks &amp; tools</h3><ul><li>Next.js, Tailwind CSS, Flutter</li><li>Git, Docker, AWS</li><li>Linux / Bash, Jupyter</li><li>TradingView Pine Script v5, MT4/5, cTrader</li></ul></div>
+    <div><h3>Education</h3><ul><li>BSc (Hons) Computer Science, The University of Manchester, 2027</li><li>A-levels, Loreto College: A* Maths, A Further Maths, A Physics</li></ul></div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="sec-head" style="margin-bottom:0"><h2>Get in touch</h2></div>
+  <div class="big" id="email">ismailazfar1@gmail.com</div>
+  <div class="contact-meta">
+    <div><span class="label">Phone</span><span class="num" id="phone">07340 184550</span></div>
+    <div><span class="label">Based in</span><span>Manchester, UK</span></div>
+  </div>
+  <div class="actions">
+    <button type="button" class="btn" id="copy">Copy email</button>
+    <button type="button" class="btn ghost" id="copy-phone">Copy number</button>
+    <a class="btn ghost" href="mailto:ismailazfar1@gmail.com">Open mail app</a>
+    <a class="btn ghost" href="https://www.linkedin.com/in/ismail-azfar/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <a class="btn ghost" href="https://github.com/ismailazfar" target="_blank" rel="noopener">GitHub ↗</a>
+  </div>
+</section>
+
+<footer>© 2026 Ismail Azfar · Manchester</footer>
+</div>
+
+<script>
+/* Project demo links: put a YouTube / Loom URL in a card's data-video to turn its frame into a play link. */
+(function(){
+  // Rotor-strip name
+  const name="ISMAIL AZFAR", wrap=document.getElementById('rotors');
+  const cells=[];
+  name.split(' ').forEach(w=>{const g=document.createElement('span');g.className='word';
+    [...w].forEach(ch=>{const d=document.createElement('span');d.className='rotor';d.textContent=ch;d.dataset.ch=ch;g.appendChild(d);cells.push(d);});
+    wrap.appendChild(g);});
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduce){
+    const A='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    cells.forEach((c,i)=>{ if(c.dataset.ch===' ')return;
+      let n=0; const stop=6+i*2;
+      const t=setInterval(()=>{ n++;
+        if(n>=stop){clearInterval(t);c.textContent=c.dataset.ch;c.classList.add('lit');setTimeout(()=>c.classList.remove('lit'),500);}
+        else c.textContent=A[(A.indexOf(c.dataset.ch)+n*7)%26];
+      },55);
+    });
+  }
+
+  // Filters
+  const btns=document.querySelectorAll('.filters button'), cards=document.querySelectorAll('.proj');
+  btns.forEach(b=>b.addEventListener('click',()=>{
+    btns.forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));
+    const f=b.dataset.f;
+    cards.forEach(c=>{c.hidden=!(f==='all'||c.dataset.cat.split(' ').includes(f));});
+  }));
+
+  // Demo frames: link out if a video URL is set
+  document.querySelectorAll('.proj').forEach(p=>{
+    const v=p.dataset.video, d=p.querySelector('.demo');
+    const file=p.dataset.file;
+    if(file){const vid=document.createElement('video');vid.className='demo';vid.controls=true;vid.preload='metadata';vid.playsInline=true;vid.src=file;if(p.dataset.poster)vid.poster=p.dataset.poster;vid.setAttribute('aria-label',(p.querySelector('h3')||{}).textContent+' demo');d.replaceWith(vid);return;}
+    if(v){const a=document.createElement('a');a.className='demo';a.href=v;a.target='_blank';a.rel='noopener';a.dataset.art=d.dataset.art;a.innerHTML=d.innerHTML;a.querySelector('.play').innerHTML='<i></i>Watch demo';d.replaceWith(a);}
+  });
+
+  // Generative posters
+  const css=()=>getComputedStyle(document.documentElement);
+  function rnd(s){return()=>(s=(s*16807)%2147483647)/2147483647;}
+  function draw(cv,art){cv.setAttribute('aria-hidden','true');
+    const r=cv.getBoundingClientRect(), dpr=Math.min(2,devicePixelRatio||1);
+    const W=Math.max(1,r.width), H=Math.max(1,r.height);
+    cv.width=W*dpr;cv.height=H*dpr;const g=cv.getContext('2d');g.scale(dpr,dpr);
+    const s=css(), ink=s.getPropertyValue('--slate').trim(), br=s.getPropertyValue('--brass').trim(), rule=s.getPropertyValue('--rule').trim();
+    const R=rnd(art.length*977+13);
+    g.lineWidth=1;g.strokeStyle=rule;
+    for(let x=0;x<W;x+=24){g.beginPath();g.moveTo(x+.5,0);g.lineTo(x+.5,H);g.stroke();}
+    for(let y=0;y<H;y+=24){g.beginPath();g.moveTo(0,y+.5);g.lineTo(W,y+.5);g.stroke();}
+    g.strokeStyle=ink;g.fillStyle=ink;g.lineWidth=1.5;
+    if(art==='rotor'){
+      const cy=H*.55;[.3,.5,.7].forEach((fx,i)=>{const cx=W*fx,rad=H*.26;g.beginPath();g.arc(cx,cy,rad,0,7);g.stroke();
+        for(let k=0;k<26;k++){const a=k/26*Math.PI*2;g.beginPath();g.moveTo(cx+Math.cos(a)*rad*.82,cy+Math.sin(a)*rad*.82);g.lineTo(cx+Math.cos(a)*rad,cy+Math.sin(a)*rad);g.stroke();}});
+      g.strokeStyle=br;g.lineWidth=2.5;g.beginPath();g.moveTo(W*.08,cy-10);
+      [[.3,-30],[.5,18],[.7,-12],[.92,0]].forEach(([fx,dy])=>g.lineTo(W*fx,cy+dy));g.stroke();
+    }else if(art==='risk'){
+      g.beginPath();let y=H*.7;for(let x=0;x<=W;x+=8){y+= (R()-.42)*10; if(x>W*.6)y-=3; g.lineTo(x,Math.max(H*.2,Math.min(H*.85,y)));}g.stroke();
+      g.strokeStyle=br;g.setLineDash([6,5]);g.beginPath();g.moveTo(0,H*.38);g.lineTo(W,H*.38);g.stroke();g.setLineDash([]);
+    }else if(art==='scan'){
+      const cx=W*.5,cy=H*.6;g.strokeStyle=ink;[.12,.24,.36].forEach(f=>{g.beginPath();g.arc(cx,cy,H*f*1.2,Math.PI,2*Math.PI);g.stroke();});
+      g.fillStyle=br;g.beginPath();g.moveTo(cx,cy);g.arc(cx,cy,H*.45,-2.1,-1.6);g.closePath();g.globalAlpha=.35;g.fill();g.globalAlpha=1;
+      g.beginPath();g.arc(W*.62,H*.32,5,0,7);g.fill();
+    }else if(art==='night'){
+      g.beginPath();g.arc(W*.78,H*.32,H*.12,0,7);g.fillStyle=br;g.fill();
+      g.fillStyle=ink;for(let i=0;i<7;i++){const x=W*(.12+i*.1),h=H*(.18+R()*.12);g.beginPath();g.arc(x,H*.8-h,10,0,7);g.fill();g.fillRect(x-9,H*.8-h+8,18,h);}
+    }else if(art==='cards'){
+      for(let i=0;i<5;i++){g.save();g.translate(W*(.25+i*.12),H*.58);g.rotate((i-2)*.18);g.strokeStyle=i===2?br:ink;g.lineWidth=i===2?2.5:1.5;g.strokeRect(-H*.12,-H*.18,H*.24,H*.36);g.restore();}
+    }else if(art==='paths'){
+      for(let p=0;p<22;p++){g.strokeStyle=p===0?br:ink;g.globalAlpha=p===0?1:.22;g.lineWidth=p===0?2.5:1;g.beginPath();let y=H*.6;g.moveTo(0,y);
+        for(let x=0;x<=W;x+=6){y+=(R()-.48)*7;g.lineTo(x,y);}g.stroke();}g.globalAlpha=1;
+    }else if(art==='candles'){
+      let y=H*.55;for(let x=18;x<W-10;x+=16){const o=y;y+=(R()-.47)*H*.08;const c=y,hi=Math.min(o,c)-R()*H*.05,lo=Math.max(o,c)+R()*H*.05;
+        g.strokeStyle=g.fillStyle=c<o?br:ink;g.beginPath();g.moveTo(x,hi);g.lineTo(x,lo);g.stroke();g.fillRect(x-4,Math.min(o,c),8,Math.max(2,Math.abs(c-o)));}
+    }else if(art==='week'){
+      const days=7,cw=W*.72/days,top=H*.26,rh=H*.16;
+      for(let i=0;i<days;i++)for(let j=0;j<3;j++){const on=R()>.45;g.strokeStyle=ink;g.globalAlpha=1;g.strokeRect(W*.14+i*cw+3,top+j*rh+3,cw-6,rh-6);
+        if(on){g.fillStyle=j===1?br:ink;g.globalAlpha=j===1?.85:.25;g.fillRect(W*.14+i*cw+6,top+j*rh+6,cw-12,rh-12);}}g.globalAlpha=1;
+    }else if(art==='grid'){
+      const cols=7,rows=3,cw=(W*.7)/cols,ch=(H*.5)/rows;
+      for(let i=0;i<cols;i++)for(let j=0;j<rows;j++){g.fillStyle=R()>.55?br:ink;g.globalAlpha=R()>.55?.85:.18;g.fillRect(W*.15+i*cw+3,H*.28+j*ch+3,cw-6,ch-6);}g.globalAlpha=1;
+    }else if(art==='nodes'){
+      const pts=[...Array(9)].map(()=>[W*(.12+R()*.76),H*(.22+R()*.6)]);
+      g.globalAlpha=.5;pts.forEach((a,i)=>pts.slice(i+1).forEach(b=>{if(Math.hypot(a[0]-b[0],a[1]-b[1])<W*.3){g.beginPath();g.moveTo(...a);g.lineTo(...b);g.stroke();}}));g.globalAlpha=1;
+      pts.forEach((p,i)=>{g.fillStyle=i===0?br:ink;g.beginPath();g.arc(p[0],p[1],i===0?7:4,0,7);g.fill();});
+    }
+  }
+  const paint=()=>document.querySelectorAll('.demo').forEach(d=>{const c=d.querySelector('canvas');if(c)draw(c,d.dataset.art);});
+  paint();
+  let t;addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(paint,150);});
+  matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',paint);
+  new MutationObserver(paint).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+  document.querySelectorAll('.filters button').forEach(b=>b.addEventListener('click',()=>requestAnimationFrame(paint)));
+
+  // Copy phone
+  document.getElementById('copy-phone').addEventListener('click',e=>{
+    const el=document.getElementById('phone'), b=e.currentTarget;
+    const done=()=>{b.textContent='Copied';setTimeout(()=>b.textContent='Copy number',1600);};
+    try{navigator.clipboard.writeText('07340184550').then(done,()=>getSelection().selectAllChildren(el));}
+    catch(_){getSelection().selectAllChildren(el);}
+  });
+
+  // Copy email
+  document.getElementById('copy').addEventListener('click',e=>{
+    const txt=document.getElementById('email').textContent, b=e.currentTarget;
+    const done=()=>{b.textContent='Copied';setTimeout(()=>b.textContent='Copy email',1600);};
+    try{navigator.clipboard.writeText(txt).then(done,()=>{getSelection().selectAllChildren(document.getElementById('email'));});}
+    catch(_){getSelection().selectAllChildren(document.getElementById('email'));}
+  });
+})();
+</script>
+</body>
+</html>
