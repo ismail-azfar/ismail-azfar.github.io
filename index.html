@@ -13,6 +13,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112..125,600..800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<!-- Visit stats: GoatCounter (no cookies). Register the code "ismailazfar" at goatcounter.com, or change it here. -->
+<script data-goatcounter="https://ismailazfar.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
 <style>
 /* Subject: Ismail Azfar's projects and experience | Audience: graduate recruiters and engineers | Job of the page: show what he builds and get him contacted */
@@ -55,7 +57,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
 .nav ul{display:flex;gap:4px 18px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
 .nav ul a{text-decoration:none;font-size:14px;color:var(--muted);display:inline-block;padding-block:6px}
 .nav ul a:hover{color:var(--ink)}
-@media (max-width:700px){.nav .wrap{flex-wrap:nowrap;gap:14px}.nav nav{overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent)}
+@media (max-width:700px){.nav .wrap{flex-wrap:nowrap;gap:12px}.nav nav{flex:1}.nav nav{overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent)}
   .nav nav::-webkit-scrollbar{display:none}.nav ul{flex-wrap:nowrap;padding-right:28px}.nav ul a{white-space:nowrap}.mark{flex:none}}
 
 /* hero */
@@ -79,9 +81,16 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
 .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
 .btn.ghost:hover{border-color:var(--ink)}
 .stage{position:relative;height:clamp(420px,70vh,640px);margin-inline:-6vw -8vw;touch-action:pan-y}
-.stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:pan-y}
-.stage canvas.hot{cursor:pointer}
-.stage canvas:active{cursor:grabbing}
+.stage{cursor:grab;touch-action:pan-y;-webkit-user-select:none;user-select:none}
+.stage.hot{cursor:pointer}
+.stage:active{cursor:grabbing}
+.scene3d{position:fixed;inset:0;width:100%;height:100vh;z-index:30;pointer-events:none;display:block}
+html.no3d .scene3d,html.no3d .slot3d{display:none!important}
+.slot3d{display:block;width:84px;height:84px;flex:none;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--accent) 16%,transparent),transparent)}
+.reel .slot3d{margin:-10px 0 -6px -10px}
+.card{container-type:inline-size}
+.card .slot3d{position:absolute;right:12px;top:10px;width:72px;height:72px;z-index:2;background:radial-gradient(closest-side,var(--bg2) 70%,transparent 72%);
+  box-shadow:0 10px 24px -12px #000}
 .stage .hint{position:absolute;right:max(8vw,16px);bottom:14px;font:400 12px var(--f-mono);color:var(--muted);pointer-events:none;transition:opacity .4s}
 .tip{position:absolute;left:0;top:0;pointer-events:none;z-index:3;padding:8px 12px;border-radius:10px;background:color-mix(in srgb,var(--panel) 92%,transparent);border:1px solid var(--line);
   box-shadow:0 12px 30px -12px #000;opacity:0;transform:translate(-50%,-130%) scale(.96);transition:opacity .15s,transform .15s;white-space:nowrap}
@@ -218,6 +227,58 @@ section{padding-block:clamp(48px,7vw,96px)}
 footer{border-top:1px solid var(--line);padding-block:24px;font:400 12px var(--f-mono);color:var(--muted)}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
+/* now strip */
+.now{padding-block:28px;border-bottom:1px solid var(--line)}
+.now .wrap{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px 32px;align-items:center}
+.now h2{font:500 13px var(--f-mono);color:var(--muted);display:flex;gap:10px;align-items:center;white-space:nowrap}
+.now h2 i{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2.4s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 0%,transparent),0 0 0 3px color-mix(in srgb,var(--accent) 30%,transparent)}}
+.now ul{list-style:none;margin:0;padding:0;display:flex;gap:8px 28px;flex-wrap:wrap}
+.now li{display:flex;gap:10px;align-items:baseline}
+.now li::before{content:"→";color:var(--accent);font-family:var(--f-mono)}
+@media (max-width:860px){.now .wrap{grid-template-columns:minmax(0,1fr)}.now ul{flex-direction:column}}
+
+/* GitHub skyline */
+#activity{border-top:1px solid var(--line)}
+.sky-wrap{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:24px;align-items:stretch}
+@media (max-width:900px){.sky-wrap{grid-template-columns:minmax(0,1fr)}}
+.fig{position:relative;min-height:400px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:radial-gradient(70% 80% at 50% 30%,#221a22,var(--bg2))}
+.fig canvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:pan-y}
+.fig .tip{transform:translate(-50%,-150%) scale(.96)}
+.fig .tip.on{transform:translate(-50%,-160%) scale(1)}
+#sky-status{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font:400 13px var(--f-mono)}
+.sky-stats{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;align-content:stretch}
+@media (max-width:900px){.sky-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.sky-stats div{background:var(--bg2);padding:16px 18px;display:grid;gap:4px;align-content:center}
+.sky-stats b{font:700 28px/1 var(--f-display);font-stretch:112%;font-variant-numeric:tabular-nums}
+.sky-stats b.hi{color:var(--accent)}
+.sky-stats span{font-size:13px;color:var(--muted)}
+.sky-note{margin:12px 0 0;font-size:14px;color:var(--muted)}
+.sky-note a{color:var(--accent);text-underline-offset:3px}
+
+/* command menu + terminal */
+.kbar{font:500 12px var(--f-mono);color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:8px;padding:6px 10px;cursor:pointer;min-height:34px;white-space:nowrap;flex:none}
+.kbar:hover{color:var(--ink);border-color:var(--muted)}
+dialog{padding:0;border:1px solid var(--line);border-radius:16px;background:var(--panel);color:var(--ink);width:min(640px,calc(100vw - 32px));max-height:min(70vh,560px);box-shadow:0 40px 80px -30px #000;overflow:hidden}
+dialog::backdrop{background:color-mix(in srgb,var(--bg) 70%,transparent);backdrop-filter:blur(6px)}
+dialog[open]{display:flex;flex-direction:column;margin-top:12vh}
+.k-in{font:400 17px var(--f-body);color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--line);padding:18px 20px;outline:none;width:100%}
+.k-list{list-style:none;margin:0;padding:8px;overflow:auto}
+.k-list li{display:flex;justify-content:space-between;gap:12px;padding:10px 12px;border-radius:10px;cursor:pointer;align-items:center;min-height:44px}
+.k-list li small{font:400 12px var(--f-mono);color:var(--muted);white-space:nowrap}
+.k-list li[aria-selected="true"]{background:var(--accent-soft);color:var(--ink)}
+.k-list .k-sec{font:500 12px var(--f-mono);color:var(--muted);padding:12px 12px 4px;min-height:0;cursor:default}
+.k-foot{display:flex;gap:16px;flex-wrap:wrap;padding:10px 16px;border-top:1px solid var(--line);font:400 12px var(--f-mono);color:var(--muted)}
+#term{background:#0A090B;font:400 14px/1.55 var(--f-mono)}
+#term .t-out{margin:0;padding:16px 18px 4px;overflow:auto;white-space:pre-wrap;flex:1;min-height:260px}
+#term .t-out .p{color:var(--accent)}
+#term .t-out .dim{color:var(--muted)}
+#term form{display:flex;gap:8px;align-items:center;padding:4px 18px 16px}
+#term form span{color:var(--accent)}
+#term input{flex:1;font:inherit;color:var(--ink);background:transparent;border:0;outline:none;font-size:16px}
+#term .t-bar{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line);color:var(--muted);font-size:12px}
+#term .t-bar button{background:none;border:0;color:var(--muted);font:inherit;cursor:pointer;min-height:32px}
+
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *{transition:none!important;animation:none!important}
@@ -234,13 +295,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <li><a href="#experience">Experience</a></li>
       <li><a href="#certifications">Certifications</a></li>
       <li><a href="#stack">Stack</a></li>
+      <li><a href="#activity">Activity</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="https://github.com/ismailazfar" target="_blank" rel="noopener">GitHub ↗</a></li>
       <li><a href="https://www.linkedin.com/in/ismail-azfar/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
     </ul></nav>
+    <button type="button" class="kbar" id="open-k" aria-label="Open the command menu" aria-haspopup="dialog"><span id="k-key">⌘K</span></button>
   </div>
 </header>
 
+<canvas id="scene" class="scene3d" aria-hidden="true"></canvas>
 <main id="top">
 <section class="hero" aria-labelledby="name" style="padding:0">
   <div class="wrap">
@@ -251,10 +315,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <div class="ctas">
         <a class="btn" href="#work">See my projects</a>
         <a class="btn ghost" href="#contact">Get in touch</a>
+        <a class="btn ghost cv" href="cv.pdf" download="Ismail-Azfar-CV.pdf" hidden>Download CV</a>
       </div>
     </div>
     <div class="stage" id="stage" aria-hidden="true">
-      <canvas id="scene"></canvas>
       <div class="tip" id="tip"><strong></strong><span></span></div>
       <span class="hint" id="hint">Drag to spin · click an object to open its project</span>
     </div>
@@ -273,6 +337,19 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   </div>
 </div>
 
+<section class="now" aria-labelledby="now-h">
+  <div class="wrap">
+    <h2 id="now-h"><i></i>Now · <span id="now-date">November 2026</span></h2>
+    <!-- Edit these lines whenever things change -->
+    <ul>
+      <li>Building my final-year Enigma simulator</li>
+      <li>Building a survey app for a public-sector client</li>
+      <li>Applying for 2027 graduate roles</li>
+    </ul>
+    <a class="btn cv" href="cv.pdf" download="Ismail-Azfar-CV.pdf" hidden>Download CV</a>
+  </div>
+</section>
+
 <section id="work">
   <div class="wrap">
     <div class="sec-head">
@@ -287,7 +364,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       </div>
     </div>
     <div class="reels">
-<article class="reel" id="p-enigma" data-obj="enigma" data-cat="software"><div class="rig"><div class="screen soon"><span class="tag">Final-year project</span><svg viewBox="0 0 640 400" role="img" aria-label="Three Enigma rotors with the current path drawn through them"><defs><g id="tk"><line x1="0" y1="-92" x2="0" y2="-80" stroke="#9DB4C8" stroke-width="2"/></g><radialGradient id="gl" cx=".5" cy=".5" r=".6"><stop offset="0" stop-color="#2A1C24"/><stop offset="1" stop-color="#141116"/></radialGradient></defs><rect width="640" height="400" fill="url(#gl)"/><g transform="translate(200 210)"><circle r="92" fill="#1A171C" stroke="#C89B5A" stroke-width="3"/><circle r="60" fill="none" stroke="#2C2730" stroke-width="2"/><use href="#tk" transform="rotate(0.00)"/><use href="#tk" transform="rotate(13.85)"/><use href="#tk" transform="rotate(27.69)"/><use href="#tk" transform="rotate(41.54)"/><use href="#tk" transform="rotate(55.38)"/><use href="#tk" transform="rotate(69.23)"/><use href="#tk" transform="rotate(83.08)"/><use href="#tk" transform="rotate(96.92)"/><use href="#tk" transform="rotate(110.77)"/><use href="#tk" transform="rotate(124.62)"/><use href="#tk" transform="rotate(138.46)"/><use href="#tk" transform="rotate(152.31)"/><use href="#tk" transform="rotate(166.15)"/><use href="#tk" transform="rotate(180.00)"/><use href="#tk" transform="rotate(193.85)"/><use href="#tk" transform="rotate(207.69)"/><use href="#tk" transform="rotate(221.54)"/><use href="#tk" transform="rotate(235.38)"/><use href="#tk" transform="rotate(249.23)"/><use href="#tk" transform="rotate(263.08)"/><use href="#tk" transform="rotate(276.92)"/><use href="#tk" transform="rotate(290.77)"/><use href="#tk" transform="rotate(304.62)"/><use href="#tk" transform="rotate(318.46)"/><use href="#tk" transform="rotate(332.31)"/><use href="#tk" transform="rotate(346.15)"/></g><g transform="translate(320 210)"><circle r="92" fill="#1A171C" stroke="#C89B5A" stroke-width="3"/><circle r="60" fill="none" stroke="#2C2730" stroke-width="2"/><use href="#tk" transform="rotate(0.00)"/><use href="#tk" transform="rotate(13.85)"/><use href="#tk" transform="rotate(27.69)"/><use href="#tk" transform="rotate(41.54)"/><use href="#tk" transform="rotate(55.38)"/><use href="#tk" transform="rotate(69.23)"/><use href="#tk" transform="rotate(83.08)"/><use href="#tk" transform="rotate(96.92)"/><use href="#tk" transform="rotate(110.77)"/><use href="#tk" transform="rotate(124.62)"/><use href="#tk" transform="rotate(138.46)"/><use href="#tk" transform="rotate(152.31)"/><use href="#tk" transform="rotate(166.15)"/><use href="#tk" transform="rotate(180.00)"/><use href="#tk" transform="rotate(193.85)"/><use href="#tk" transform="rotate(207.69)"/><use href="#tk" transform="rotate(221.54)"/><use href="#tk" transform="rotate(235.38)"/><use href="#tk" transform="rotate(249.23)"/><use href="#tk" transform="rotate(263.08)"/><use href="#tk" transform="rotate(276.92)"/><use href="#tk" transform="rotate(290.77)"/><use href="#tk" transform="rotate(304.62)"/><use href="#tk" transform="rotate(318.46)"/><use href="#tk" transform="rotate(332.31)"/><use href="#tk" transform="rotate(346.15)"/></g><g transform="translate(440 210)"><circle r="92" fill="#1A171C" stroke="#C89B5A" stroke-width="3"/><circle r="60" fill="none" stroke="#2C2730" stroke-width="2"/><use href="#tk" transform="rotate(0.00)"/><use href="#tk" transform="rotate(13.85)"/><use href="#tk" transform="rotate(27.69)"/><use href="#tk" transform="rotate(41.54)"/><use href="#tk" transform="rotate(55.38)"/><use href="#tk" transform="rotate(69.23)"/><use href="#tk" transform="rotate(83.08)"/><use href="#tk" transform="rotate(96.92)"/><use href="#tk" transform="rotate(110.77)"/><use href="#tk" transform="rotate(124.62)"/><use href="#tk" transform="rotate(138.46)"/><use href="#tk" transform="rotate(152.31)"/><use href="#tk" transform="rotate(166.15)"/><use href="#tk" transform="rotate(180.00)"/><use href="#tk" transform="rotate(193.85)"/><use href="#tk" transform="rotate(207.69)"/><use href="#tk" transform="rotate(221.54)"/><use href="#tk" transform="rotate(235.38)"/><use href="#tk" transform="rotate(249.23)"/><use href="#tk" transform="rotate(263.08)"/><use href="#tk" transform="rotate(276.92)"/><use href="#tk" transform="rotate(290.77)"/><use href="#tk" transform="rotate(304.62)"/><use href="#tk" transform="rotate(318.46)"/><use href="#tk" transform="rotate(332.31)"/><use href="#tk" transform="rotate(346.15)"/></g><polyline points="60,200 200,170 320,240 440,190 580,210" fill="none" stroke="#FF5533" stroke-width="4" stroke-linejoin="round"/><circle cx="580" cy="210" r="9" fill="#FF5533"/></svg><span class="play"><i></i>Demo coming soon</span></div></div><div class="body">
+<article class="reel" id="p-enigma" data-obj="enigma" data-cat="software"><div class="rig"><div class="screen soon"><span class="tag">Final-year project</span><svg viewBox="0 0 640 400" role="img" aria-label="Three Enigma rotors with the current path drawn through them"><defs><g id="tk"><line x1="0" y1="-92" x2="0" y2="-80" stroke="#9DB4C8" stroke-width="2"/></g><radialGradient id="gl" cx=".5" cy=".5" r=".6"><stop offset="0" stop-color="#2A1C24"/><stop offset="1" stop-color="#141116"/></radialGradient></defs><rect width="640" height="400" fill="url(#gl)"/><g transform="translate(200 210)"><circle r="92" fill="#1A171C" stroke="#C89B5A" stroke-width="3"/><circle r="60" fill="none" stroke="#2C2730" stroke-width="2"/><use href="#tk" transform="rotate(0.00)"/><use href="#tk" transform="rotate(13.85)"/><use href="#tk" transform="rotate(27.69)"/><use href="#tk" transform="rotate(41.54)"/><use href="#tk" transform="rotate(55.38)"/><use href="#tk" transform="rotate(69.23)"/><use href="#tk" transform="rotate(83.08)"/><use href="#tk" transform="rotate(96.92)"/><use href="#tk" transform="rotate(110.77)"/><use href="#tk" transform="rotate(124.62)"/><use href="#tk" transform="rotate(138.46)"/><use href="#tk" transform="rotate(152.31)"/><use href="#tk" transform="rotate(166.15)"/><use href="#tk" transform="rotate(180.00)"/><use href="#tk" transform="rotate(193.85)"/><use href="#tk" transform="rotate(207.69)"/><use href="#tk" transform="rotate(221.54)"/><use href="#tk" transform="rotate(235.38)"/><use href="#tk" transform="rotate(249.23)"/><use href="#tk" transform="rotate(263.08)"/><use href="#tk" transform="rotate(276.92)"/><use href="#tk" transform="rotate(290.77)"/><use href="#tk" transform="rotate(304.62)"/><use href="#tk" transform="rotate(318.46)"/><use href="#tk" transform="rotate(332.31)"/><use href="#tk" transform="rotate(346.15)"/></g><g transform="translate(320 210)"><circle r="92" fill="#1A171C" stroke="#C89B5A" stroke-width="3"/><circle r="60" fill="none" stroke="#2C2730" stroke-width="2"/><use href="#tk" transform="rotate(0.00)"/><use href="#tk" transform="rotate(13.85)"/><use href="#tk" transform="rotate(27.69)"/><use href="#tk" transform="rotate(41.54)"/><use href="#tk" transform="rotate(55.38)"/><use href="#tk" transform="rotate(69.23)"/><use href="#tk" transform="rotate(83.08)"/><use href="#tk" transform="rotate(96.92)"/><use href="#tk" transform="rotate(110.77)"/><use href="#tk" transform="rotate(124.62)"/><use href="#tk" transform="rotate(138.46)"/><use href="#tk" transform="rotate(152.31)"/><use href="#tk" transform="rotate(166.15)"/><use href="#tk" transform="rotate(180.00)"/><use href="#tk" transform="rotate(193.85)"/><use href="#tk" transform="rotate(207.69)"/><use href="#tk" transform="rotate(221.54)"/><use href="#tk" transform="rotate(235.38)"/><use href="#tk" transform="rotate(249.23)"/><use href="#tk" transform="rotate(263.08)"/><use href="#tk" transform="rotate(276.92)"/><use href="#tk" transform="rotate(290.77)"/><use href="#tk" transform="rotate(304.62)"/><use href="#tk" transform="rotate(318.46)"/><use href="#tk" transform="rotate(332.31)"/><use href="#tk" transform="rotate(346.15)"/></g><g transform="translate(440 210)"><circle r="92" fill="#1A171C" stroke="#C89B5A" stroke-width="3"/><circle r="60" fill="none" stroke="#2C2730" stroke-width="2"/><use href="#tk" transform="rotate(0.00)"/><use href="#tk" transform="rotate(13.85)"/><use href="#tk" transform="rotate(27.69)"/><use href="#tk" transform="rotate(41.54)"/><use href="#tk" transform="rotate(55.38)"/><use href="#tk" transform="rotate(69.23)"/><use href="#tk" transform="rotate(83.08)"/><use href="#tk" transform="rotate(96.92)"/><use href="#tk" transform="rotate(110.77)"/><use href="#tk" transform="rotate(124.62)"/><use href="#tk" transform="rotate(138.46)"/><use href="#tk" transform="rotate(152.31)"/><use href="#tk" transform="rotate(166.15)"/><use href="#tk" transform="rotate(180.00)"/><use href="#tk" transform="rotate(193.85)"/><use href="#tk" transform="rotate(207.69)"/><use href="#tk" transform="rotate(221.54)"/><use href="#tk" transform="rotate(235.38)"/><use href="#tk" transform="rotate(249.23)"/><use href="#tk" transform="rotate(263.08)"/><use href="#tk" transform="rotate(276.92)"/><use href="#tk" transform="rotate(290.77)"/><use href="#tk" transform="rotate(304.62)"/><use href="#tk" transform="rotate(318.46)"/><use href="#tk" transform="rotate(332.31)"/><use href="#tk" transform="rotate(346.15)"/></g><polyline points="60,200 200,170 320,240 440,190 580,210" fill="none" stroke="#FF5533" stroke-width="4" stroke-linejoin="round"/><circle cx="580" cy="210" r="9" fill="#FF5533"/></svg><span class="play"><i></i>Demo coming soon</span></div></div><div class="body"><span class="slot3d" aria-hidden="true"></span>
         <div class="row"><span class="ctx">2026 – 27 · 40-credit dissertation</span><span class="status wip">In progress</span></div>
         <h3>Enigma Machine Simulator</h3>
         <p>An interactive web simulator of the Enigma cipher machine. Instead of only mapping letters, it models the electromechanical path: current flows from a key through the plugboard, three rotors and the reflector, then back out to a lamp, and you can watch each hop as it happens.</p>
@@ -298,7 +375,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <g fill="#9DB4C8"><circle cx="90" cy="290" r="6"/><circle cx="180" cy="282" r="6"/><circle cx="270" cy="272" r="6"/><circle cx="360" cy="262" r="6"/><circle cx="450" cy="252" r="6"/></g><g fill="#FF5533"><circle cx="90" cy="90" r="6"/><circle cx="180" cy="125" r="6"/><circle cx="270" cy="160" r="6"/><circle cx="360" cy="190" r="6"/><circle cx="450" cy="215" r="6"/></g>
 <circle cx="520" cy="240" r="16" fill="#F2EDE6"/><path d="M512 240l6 6 11-12" fill="none" stroke="#141116" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
 <rect x="400" y="92" width="200" height="56" rx="10" fill="#1A171C" stroke="#2C2730"/><text x="416" y="114" fill="#A69CA2" font-family="sans-serif" font-size="13">Deal agreed</text><text x="416" y="137" fill="#F2EDE6" font-family="sans-serif" font-weight="700" font-size="18">£260 · both approved</text>
-<text x="96" y="318" fill="#9DB4C8" font-family="sans-serif" font-size="14" font-weight="600">Buyer agent</text><text x="96" y="72" fill="#FF5533" font-family="sans-serif" font-size="14" font-weight="600">Seller agent</text></svg><img src="haggle.jpg" loading="lazy" width="1280" height="720" alt="" onerror="this.remove()"><span class="play"><i></i>Watch demo</span></a></div><div class="body">
+<text x="96" y="318" fill="#9DB4C8" font-family="sans-serif" font-size="14" font-weight="600">Buyer agent</text><text x="96" y="72" fill="#FF5533" font-family="sans-serif" font-size="14" font-weight="600">Seller agent</text></svg><img src="haggle.jpg" loading="lazy" width="1280" height="720" alt="" onerror="this.remove()"><span class="play"><i></i>Watch demo</span></a></div><div class="body"><span class="slot3d" aria-hidden="true"></span>
         <div class="row"><span class="ctx">Nov 2026 · Team of three</span><span class="status live">Live</span></div>
         <h3>Haggle</h3>
         <p>A marketplace where your AI agent haggles with the seller's AI agent, live, while you watch. You give your agent a private max budget, a deadline and your must-haves, and the seller sets a hidden floor price. Neither agent sees the other's limits. A server-side guard checks every move against those limits and blocks any offer that breaks them, so your agent can never go over your max. Only you can raise it. When the best offer is just over your limit, the agent stops and asks you instead of stretching. Both people approve the deal before PayPal creates the order, so the agents never touch money.</p>
@@ -312,7 +389,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <ul class="stack"><li>Next.js 15</li><li>TypeScript</li><li>PayPal Orders API</li><li>Qwen3 on Nebius</li><li>Server-Sent Events</li><li>Prisma</li><li>AG Grid</li></ul>
         <div class="links"><a href="https://haggle-production-b343.up.railway.app/" target="_blank" rel="noopener">Try it live ↗</a><a href="https://www.youtube.com/watch?v=z1aH3oEOnHM" target="_blank" rel="noopener">Watch the demo ↗</a><a href="https://devpost.com/software/haggle-ai-agents-negotiate-you-approve-paypal-settles" target="_blank" rel="noopener">Devpost ↗</a><a href="https://github.com/ashaz3256/haggle" target="_blank" rel="noopener">View code ↗</a></div>
       </div></article>
-<article class="reel" id="p-early" data-obj="early" data-cat="ai"><div class="rig"><a class="screen" href="https://youtu.be/T4TPnStSTC0" target="_blank" rel="noopener" aria-label="Watch the AI Early-Warning System demo"><span class="tag">IBM Z Datathon 2026</span><img loading="lazy" src="early-warning.jpg" width="720" height="450" alt="Ismail presenting the early-warning dashboard on a screen, pointing at a customer's rising missed-rent risk chart"><span class="play"><i></i>Watch demo</span></a></div><div class="body">
+<article class="reel" id="p-early" data-obj="early" data-cat="ai"><div class="rig"><a class="screen" href="https://youtu.be/T4TPnStSTC0" target="_blank" rel="noopener" aria-label="Watch the AI Early-Warning System demo"><span class="tag">IBM Z Datathon 2026</span><img loading="lazy" src="early-warning.jpg" width="720" height="450" alt="Ismail presenting the early-warning dashboard on a screen, pointing at a customer's rising missed-rent risk chart"><span class="play"><i></i>Watch demo</span></a></div><div class="body"><span class="slot3d" aria-hidden="true"></span>
         <div class="row"><span class="ctx">2026 · Team of four · 24 hours</span><span class="status done">Shipped</span></div>
         <h3>AI Early-Warning System</h3>
         <p>Problem debt shows up in bank data weeks before someone misses rent: a falling balance, payday loans, bounced bills. This system spots it early. An XGBoost model scores each customer's risk every week and explains why they were flagged, what-if scenarios show which changes would lower the risk, and IBM Granite running locally writes a supportive action plan with safety rules so it never suggests more borrowing and always points to free help. Everything runs on IBM LinuxONE, so financial data never leaves the machine.</p>
@@ -325,7 +402,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <ul class="stack"><li>Python</li><li>XGBoost</li><li>Explainable AI</li><li>IBM Granite</li><li>IBM LinuxONE</li></ul>
         <div class="links"><a href="https://youtu.be/T4TPnStSTC0" target="_blank" rel="noopener">Watch the demo ↗</a></div>
       </div></article>
-<article class="reel" id="p-rescue" data-obj="rescue" data-cat="ai"><div class="rig"><a class="screen" href="https://www.youtube.com/watch?v=nEB8PAOwE6M" target="_blank" rel="noopener" aria-label="Watch the Rescue Scout demo"><span class="tag">Nebius × NVIDIA · Physical AI</span><img loading="lazy" src="rescue-scout.jpg" width="720" height="450" alt="Rescue Scout demo frame: the RC car beside its live camera feed and a mission log reading 'Door straight ahead, forward'"><span class="play"><i></i>Watch demo</span></a></div><div class="body">
+<article class="reel" id="p-rescue" data-obj="rescue" data-cat="ai"><div class="rig"><a class="screen" href="https://www.youtube.com/watch?v=nEB8PAOwE6M" target="_blank" rel="noopener" aria-label="Watch the Rescue Scout demo"><span class="tag">Nebius × NVIDIA · Physical AI</span><img loading="lazy" src="rescue-scout.jpg" width="720" height="450" alt="Rescue Scout demo frame: the RC car beside its live camera feed and a mission log reading 'Door straight ahead, forward'"><span class="play"><i></i>Watch demo</span></a></div><div class="body"><span class="slot3d" aria-hidden="true"></span>
         <div class="row"><span class="ctx">2026 · Team of five · Built in under 10 days</span><span class="status done">Shipped</span></div>
         <h3>Rescue Scout</h3>
         <p>A cheap scout robot that goes into a building before firefighters do, finds people and reports where they are. The prototype is a toy RC car with one FPV camera and a £5 ultrasonic sensor, with no LiDAR and no map. NVIDIA Nemotron vision models on Nebius Token Factory read the camera and choose each move, a planner surveys the room and heads for open doors, and a ground-plane calibration turns the single camera into a distance sensor.</p>
@@ -339,7 +416,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <ul class="stack"><li>NVIDIA Nemotron</li><li>Nebius Token Factory</li><li>Vision-language models</li><li>Python</li><li>Embedded hardware</li></ul>
         <div class="links"><a href="https://www.youtube.com/watch?v=nEB8PAOwE6M" target="_blank" rel="noopener">Watch the demo ↗</a></div>
       </div></article>
-<article class="reel" id="p-tilt" data-obj="tilt" data-cat="games ai"><div class="rig"><a class="screen" href="https://youtu.be/GdtUvbLRCNg" target="_blank" rel="noopener" aria-label="Watch the Tilt demo"><span class="tag">OxHack 2026</span><img loading="lazy" src="tilt.jpg" width="720" height="376" alt="Tilt title screen: a red moon over a dark town and the words 'Night falls on Tilt'"><span class="play"><i></i>Watch demo</span></a></div><div class="body">
+<article class="reel" id="p-tilt" data-obj="tilt" data-cat="games ai"><div class="rig"><a class="screen" href="https://youtu.be/GdtUvbLRCNg" target="_blank" rel="noopener" aria-label="Watch the Tilt demo"><span class="tag">OxHack 2026</span><img loading="lazy" src="tilt.jpg" width="720" height="376" alt="Tilt title screen: a red moon over a dark town and the words 'Night falls on Tilt'"><span class="play"><i></i>Watch demo</span></a></div><div class="body"><span class="slot3d" aria-hidden="true"></span>
         <div class="row"><span class="ctx">2026 · Team of two · Hackathon</span><span class="status done">Shipped</span></div>
         <h3>Tilt</h3>
         <p>A Mafia game played over a call against AI townsfolk who watch your face for tells. A lie-detection model trained on a published deception dataset feeds a Bayesian town: each AI player keeps a probability that each person is the mafia, trusts the detector only as far as it has proven itself on you, and votes to maximise the chance the mafia goes. Every character has its own ElevenLabs v4 voice with delivery cues, so the narrator whispers at night and players get sarcastic when they don't believe you.</p>
@@ -353,7 +430,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <ul class="stack"><li>Computer vision</li><li>Bayesian inference</li><li>Model evaluation</li><li>ElevenLabs v4</li></ul>
         <div class="links"><a href="https://youtu.be/GdtUvbLRCNg" target="_blank" rel="noopener">Watch the demo ↗</a></div>
       </div></article>
-<article class="reel" id="p-spy" data-obj="spy" data-cat="quant"><div class="rig"><div class="screen soon"><span class="tag">Research paper</span><img loading="lazy" src="quant-monte-carlo-paths.jpg" width="1140" height="642" style="object-position:center" alt="Monte Carlo chart from the paper: a dense fan of 1,000 resampled equity paths with the actual strategy, buy and hold, and the average random path drawn over them"></div></div><div class="body">
+<article class="reel" id="p-spy" data-obj="spy" data-cat="quant"><div class="rig"><div class="screen soon"><span class="tag">Research paper</span><img loading="lazy" src="quant-monte-carlo-paths.jpg" width="1140" height="642" style="object-position:center" alt="Monte Carlo chart from the paper: a dense fan of 1,000 resampled equity paths with the actual strategy, buy and hold, and the average random path drawn over them"></div></div><div class="body"><span class="slot3d" aria-hidden="true"></span>
         <div class="row"><span class="ctx">July 2026 · Independent research</span><span class="status done">Paper written</span></div>
         <h3>SPY Quantitative Backtesting Engine</h3>
         <p>A Python backtester for 15-minute SPY data that works through three strategy families: moving-average trend filters, ICT Judas Swing liquidity sweeps and Fair Value Gap entries. Every trade pays a 0.01% cost, and results are stress-tested with 1,000-path Monte Carlo resampling. The best variant buys the first touch of a Fair Value Gap in the 09:30–11:00 session.</p>
@@ -370,35 +447,35 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     </div>
     <div class="more-head" id="more-head"><h3>More projects</h3></div>
     <div class="grid">
-<article class="card" id="p-journal" data-obj="journal" data-cat="quant software"><div class="media"><span class="tag">Web app</span><video controls preload="metadata" playsinline src="trading-journal-demo.mp4" poster="trading-journal-poster.jpg" aria-label="Day Trader's Journal demo"></video></div><div class="body">
+<article class="card" id="p-journal" data-obj="journal" data-cat="quant software"><div class="media"><span class="tag">Web app</span><video controls preload="metadata" playsinline src="trading-journal-demo.mp4" poster="trading-journal-poster.jpg" aria-label="Day Trader's Journal demo"></video></div><span class="slot3d" aria-hidden="true"></span><div class="body">
         <div class="row"><span class="ctx">August 2025</span><span class="status done">Shipped</span></div>
         <h3>Day Trader's Journal</h3>
         <p>A free, lightweight trading journal I built when I couldn't find one that wasn't clunky. Log a trade with entry, exit and notes, and it works out P/L and keeps a running win rate. You can attach chart screenshots to each trade and sketch setups in a separate notepad, all beside a live TradingView chart. Everything is saved in the browser, so there's no account and no server.</p>
         <p class="ctx">My first plan was a custom live chart. API rate limits, unreliable WebSockets and iframes that block screenshots sent me back to a simpler design that works.</p>
         <ul class="stack"><li>JavaScript</li><li>Tailwind CSS</li><li>Local Storage</li><li>TradingView widgets</li></ul>
       </div></article>
-<article class="card" id="p-cook" data-obj="cook" data-cat="software"><div class="media"><span class="tag">Team project</span><img loading="lazy" src="let-em-cook-calendar.jpg" width="1280" height="790" alt="Let Em Cook's monthly meal-plan calendar with an Add Meal button on each day"></div><div class="body">
+<article class="card" id="p-cook" data-obj="cook" data-cat="software"><div class="media"><span class="tag">Team project</span><img loading="lazy" src="let-em-cook-calendar.jpg" width="1280" height="790" alt="Let Em Cook's monthly meal-plan calendar with an Add Meal button on each day"></div><span class="slot3d" aria-hidden="true"></span><div class="body">
         <div class="row"><span class="ctx">2025 · Team project · Front-end pages</span><span class="status done">Shipped</span></div>
         <h3>Let Em Cook</h3>
         <p>A meal planner that suggests recipes from what is already in your pantry, filters out your allergens and dietary preferences, and lays the week out on a calendar. Missing ingredients go straight onto a shopping list. I built the front-end pages in React and TypeScript.</p>
         <ul class="stack"><li>React</li><li>TypeScript</li><li>PHP REST API</li><li>MySQL</li><li>Python</li></ul>
         <div class="links"><a href="https://github.com/anayduggal/let-em-cook" target="_blank" rel="noopener">View code ↗</a></div>
       </div></article>
-<article class="card" id="p-futureflow" data-obj="futureflow" data-cat="ventures software"><div class="media"><span class="tag">Founder</span><img loading="lazy" src="futureflow-home.jpg" width="1131" height="636" alt="FutureFlow Tuition homepage: headline 'Turn Cs/Bs into As/A*', a Start Here button and a free-call booking calendar"></div><div class="body">
+<article class="card" id="p-futureflow" data-obj="futureflow" data-cat="ventures software"><div class="media"><span class="tag">Founder</span><img loading="lazy" src="futureflow-home.jpg" width="1131" height="636" alt="FutureFlow Tuition homepage: headline 'Turn Cs/Bs into As/A*', a Start Here button and a free-call booking calendar"></div><span class="slot3d" aria-hidden="true"></span><div class="body">
         <div class="row"><span class="ctx">Since December 2025</span><span class="status live">Live</span></div>
         <h3>FutureFlow Tuition</h3>
         <p>An online 1-on-1 tutoring and mentorship business. I built the site and the student experience behind it, including a student portal we built ourselves, with dashboards, per-subject progress trackers and automated onboarding.</p>
         <ul class="stack"><li>Web</li><li>Custom student portal</li><li>Automation</li></ul>
         <div class="links"><a href="https://futureflowtuition.co.uk" target="_blank" rel="noopener">futureflowtuition.co.uk ↗</a></div>
       </div></article>
-<article class="card" id="p-lumara" data-obj="lumara" data-cat="ventures software ai"><div class="media"><span class="tag">Co-founder</span><img loading="lazy" src="lumara-academy.jpg" width="1300" height="731" alt="Lumara Web Dev Academy dashboard: 'Learn to build for the web, then build something real', with an overall progress card showing the next module"></div><div class="body">
+<article class="card" id="p-lumara" data-obj="lumara" data-cat="ventures software ai"><div class="media"><span class="tag">Co-founder</span><img loading="lazy" src="lumara-academy.jpg" width="1300" height="731" alt="Lumara Web Dev Academy dashboard: 'Learn to build for the web, then build something real', with an overall progress card showing the next module"></div><span class="slot3d" aria-hidden="true"></span><div class="body">
         <div class="row"><span class="ctx">Since September 2025</span><span class="status live">Active</span></div>
         <h3>Lumara</h3>
         <p>A studio building full-stack web applications and AI integrations for clients. We also built the Lumara Web Dev Academy, the platform behind our work-experience placement: a two-week course in HTML, CSS, JavaScript and Git across ten modules, with four small projects and a capstone reviewed by the team. Students track progress against a 58-item checklist, mentors and reviewers get their own areas, and each student finishes by building a page on a live client site.</p>
         <ul class="stack"><li>Next.js</li><li>TypeScript</li><li>PostgreSQL</li><li>Prisma</li><li>Redis</li><li>Vercel</li><li>GitHub Actions</li><li>LLMs</li></ul>
         <div class="links"><a href="https://lumarawebdev.com/" target="_blank" rel="noopener">lumarawebdev.com ↗</a><a href="https://lumaraonline.co.uk" target="_blank" rel="noopener">lumaraonline.co.uk ↗</a></div>
       </div></article>
-<article class="card" id="p-mafia" data-obj="mafia" data-cat="games"><div class="media"><span class="tag">Published on Roblox</span><img loading="lazy" src="mafia-night.jpg" width="640" height="360" alt="Mafia Night game thumbnail: five blocky characters in suits around a green card table under the words 'Who is the Mafia?'"></div><div class="body">
+<article class="card" id="p-mafia" data-obj="mafia" data-cat="games"><div class="media"><span class="tag">Published on Roblox</span><img loading="lazy" src="mafia-night.jpg" width="640" height="360" alt="Mafia Night game thumbnail: five blocky characters in suits around a green card table under the words 'Who is the Mafia?'"></div><span class="slot3d" aria-hidden="true"></span><div class="body">
         <div class="row"><span class="ctx">Roblox Studio · Live game</span><span class="status live">Live</span></div>
         <h3>Mafia Night [VOICE CHAT]</h3>
         <p>A social-deduction game set in a 1930s speakeasy. Each player is secretly dealt a role (Mafia, Doctor, Detective, Jester or Villager), then everyone talks, bluffs and votes over voice chat to find the Mafia before they take the town. At night the Mafia can whisper to each other, and the dead only hear the dead. Hosts can run private parties with a code and set the timers, role counts and Jester, or players can jump into Quick Play. I keep shipping updates, most recently the Jester role.</p>
@@ -463,6 +540,22 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   </div>
 </section>
 
+<section id="activity">
+  <div class="wrap">
+    <div class="sec-head"><div><h2>Shipping log</h2><p>Every day of the last year on GitHub as a tower. Taller means more commits. Drag to look around.</p></div></div>
+    <div class="sky-wrap">
+      <div class="fig" id="sky" aria-label="3D chart of daily GitHub contributions over the last year"><canvas></canvas><div class="tip" id="sky-tip"><strong></strong><span></span></div><div id="sky-status">Loading GitHub activity…</div></div>
+      <div class="sky-stats" id="sky-stats">
+        <div><b class="hi" id="sky-total">–</b><span>Contributions in the last year</span></div>
+        <div><b id="sky-long">–</b><span>Longest streak</span></div>
+        <div><b id="sky-cur">–</b><span>Current streak</span></div>
+        <div><b id="sky-best">–</b><span>Busiest day · <span id="sky-best-d">–</span></span></div>
+      </div>
+    </div>
+    <p class="sky-note">Public activity from <a href="https://github.com/ismailazfar" target="_blank" rel="noopener">ismailazfar</a> and <a href="https://github.com/ismail-azfar" target="_blank" rel="noopener">ismail-azfar</a>, updated live.</p>
+  </div>
+</section>
+
 <section id="contact" class="contact">
   <div class="wrap">
     <h2>Get in touch</h2>
@@ -481,7 +574,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   </div>
 </section>
 </main>
-<footer><div class="wrap"><span>© 2026 Ismail Azfar · Manchester</span><span>3D scene built with Three.js</span></div></footer>
+<dialog id="cmdk" aria-label="Command menu">
+  <input class="k-in" id="k-in" type="text" placeholder="Jump to a project, section or action…" autocomplete="off" spellcheck="false" role="combobox" aria-controls="k-list" aria-expanded="true">
+  <ul class="k-list" id="k-list" role="listbox"></ul>
+  <div class="k-foot"><span>↑↓ to move</span><span>Enter to open</span><span>Esc to close</span><span>` for the terminal</span></div>
+</dialog>
+<dialog id="term" aria-label="Terminal">
+  <div class="t-bar"><span>ismail@portfolio: ~</span><button type="button" id="t-close">Close</button></div>
+  <pre class="t-out" id="t-out" aria-live="polite"></pre>
+  <form id="t-form"><span>$</span><input id="t-in" autocomplete="off" spellcheck="false" aria-label="Terminal command" autocapitalize="off"></form>
+</dialog>
+<footer><div class="wrap"><span>© 2026 Ismail Azfar · Manchester</span><span>Press ⌘K or Ctrl K to jump anywhere</span></div></footer>
 
 <script>
 {
@@ -519,6 +622,81 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   });
   copy('copy','ismailazfar1@gmail.com','Copy email','email');
   copy('copy-phone','07340184550','Copy number','phone');
+
+  // CV buttons: shown only once cv.pdf exists in the repo
+  fetch('cv.pdf',{method:'HEAD'}).then(r=>{if(r.ok&&!/text\/html/.test(r.headers.get('content-type')||''))document.querySelectorAll('.cv').forEach(a=>a.hidden=false);}).catch(()=>{});
+
+  // Command menu (⌘K / Ctrl K)
+  const isMac=/Mac|iPhone|iPad/.test(navigator.platform||navigator.userAgent);
+  document.getElementById('k-key').textContent=isMac?'⌘K':'Ctrl K';
+  const dlg=document.getElementById('cmdk'),kin=document.getElementById('k-in'),klist=document.getElementById('k-list');
+  const go=id=>()=>{const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:reduce?'auto':'smooth'});};
+  const ext=url=>()=>window.open(url,'_blank','noopener');
+  const projEls=[...document.querySelectorAll('[data-obj]')];
+  const projects=projEls.map(el=>({key:el.dataset.obj,label:el.querySelector('h3').textContent.trim(),hint:'Project',
+    run:()=>{if(window.__open3d)window.__open3d(el.dataset.obj);else{if(el.hidden)document.querySelector('.filters [data-f="all"]').click();el.scrollIntoView({behavior:reduce?'auto':'smooth'});}}}));
+  const sections=[['Work','work'],['Experience','experience'],['Certifications','certifications'],['Stack & education','stack'],['GitHub activity','activity'],['Contact','contact']].map(([l,id])=>({label:l,hint:'Section',run:go(id)}));
+  const actions=[
+    {label:'Copy email address',hint:'Action',run:()=>document.getElementById('copy').click()},
+    {label:'Download CV',hint:'Action',run:()=>{const a=document.querySelector('.cv:not([hidden])');if(a)a.click();else go('contact')();}},
+    {label:'Open GitHub',hint:'Link',run:ext('https://github.com/ismailazfar')},
+    {label:'Open LinkedIn',hint:'Link',run:ext('https://www.linkedin.com/in/ismail-azfar/')},
+    {label:'Open the terminal',hint:'Easter egg',run:()=>openTerm()}];
+  const groups=[['Projects',projects],['Sections',sections],['Actions',actions]];
+  let shown=[],sel=0;
+  function renderK(){
+    const q=kin.value.trim().toLowerCase();klist.innerHTML='';shown=[];
+    groups.forEach(([name,list])=>{const hits=list.filter(c=>!q||c.label.toLowerCase().includes(q)||c.hint.toLowerCase().includes(q));if(!hits.length)return;
+      const h=document.createElement('li');h.className='k-sec';h.textContent=name;h.setAttribute('role','presentation');klist.appendChild(h);
+      hits.forEach(c=>{const i=shown.length,li=document.createElement('li');li.setAttribute('role','option');li.id='k-'+i;
+        const t=document.createElement('span');t.textContent=c.label;const s=document.createElement('small');s.textContent=c.hint;li.append(t,s);
+        li.addEventListener('click',()=>runK(i));li.addEventListener('pointermove',()=>{if(sel!==i){sel=i;mark();}});klist.appendChild(li);shown.push(c);});});
+    if(!shown.length){const li=document.createElement('li');li.className='k-sec';li.textContent='Nothing matches. Try “enigma” or “contact”.';klist.appendChild(li);}
+    sel=0;mark();}
+  function mark(){klist.querySelectorAll('[role=option]').forEach((li,i)=>{li.setAttribute('aria-selected',i===sel?'true':'false');if(i===sel)li.scrollIntoView({block:'nearest'});});kin.setAttribute('aria-activedescendant',shown.length?'k-'+sel:'');}
+  function runK(i){const c=shown[i];if(!c)return;dlg.close();setTimeout(()=>c.run(),30);}
+  function openK(){if(term.open)term.close();kin.value='';renderK();dlg.showModal();kin.focus();}
+  kin.addEventListener('input',renderK);
+  kin.addEventListener('keydown',e=>{
+    if(e.key==='ArrowDown'){e.preventDefault();sel=Math.min(shown.length-1,sel+1);mark();}
+    else if(e.key==='ArrowUp'){e.preventDefault();sel=Math.max(0,sel-1);mark();}
+    else if(e.key==='Enter'){e.preventDefault();runK(sel);}
+    else if(e.key==='`'){e.preventDefault();dlg.close();openTerm();}});
+  dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close();});
+  document.getElementById('open-k').addEventListener('click',openK);
+
+  // Terminal easter egg
+  const term=document.getElementById('term'),tout=document.getElementById('t-out'),tin=document.getElementById('t-in');
+  const line=(txt,cls)=>{const s=document.createElement('span');if(cls)s.className=cls;s.textContent=txt+'\n';tout.appendChild(s);tout.scrollTop=tout.scrollHeight;};
+  const mailText=()=>document.getElementById('email').textContent.trim();
+  const cmds={
+    help:()=>['Commands:','  whoami          who I am','  ls              list projects','  open <name>     jump to a project (e.g. open haggle)','  cat now.txt     what I am working on','  contact         how to reach me','  cv              download my CV','  github          open GitHub','  sudo hire ismail','  clear, exit'].forEach(l=>line(l)),
+    whoami:()=>{line('Ismail Azfar');line('Final-year Computer Science, The University of Manchester (2027)','dim');line('Founder of FutureFlow Tuition, co-founder of Lumara. Builds AI systems, trading tools and games.','dim');},
+    ls:()=>projects.forEach(p=>line(p.key.padEnd(12)+p.label)),
+    cat:a=>{if(a==='now.txt')document.querySelectorAll('.now li').forEach(li=>line('→ '+li.textContent));else line('cat: '+(a||'')+': no such file. Try: cat now.txt','dim');},
+    open:a=>{const q=(a||'').toLowerCase();const hit=q&&projects.find(p=>p.key===q||p.label.toLowerCase().includes(q));
+      if(!hit){line('open: no project called "'+(a||'')+'". Type ls to see them.','dim');return;}line('Opening '+hit.label+'…');setTimeout(()=>{term.close();hit.run();},300);},
+    contact:()=>{line('Email    '+mailText());line('GitHub   github.com/ismailazfar');line('LinkedIn linkedin.com/in/ismail-azfar');},
+    cv:()=>{const a=document.querySelector('.cv:not([hidden])');if(a){line('Downloading CV…');a.click();}else line('CV not uploaded yet. Email me and I will send it.','dim');},
+    github:()=>{line('Opening GitHub…');ext('https://github.com/ismailazfar')();},
+    sudo:a=>{if(/hire\s+ismail/i.test(a||'')){line('[sudo] permission granted.');line('Great choice. Opening the contact section…');setTimeout(()=>{term.close();go('contact')();},700);}else line('sudo: try "sudo hire ismail"','dim');},
+    clear:()=>{tout.textContent='';},
+    exit:()=>term.close(),
+    date:()=>line(new Date().toString()),
+    echo:a=>line(a||'')};
+  function openTerm(){if(dlg.open)dlg.close();if(!tout.textContent)line('Welcome. Type help to see what you can do.','dim');term.showModal();tin.focus();}
+  document.getElementById('t-form').addEventListener('submit',e=>{e.preventDefault();const raw=tin.value.trim();tin.value='';if(!raw)return;
+    line('$ '+raw,'p');const [c,...rest]=raw.split(/\s+/);const f=cmds[c.toLowerCase()];
+    if(f)f(rest.join(' '));else line(c+': command not found. Type help.','dim');});
+  document.getElementById('t-close').addEventListener('click',()=>term.close());
+  term.addEventListener('click',e=>{if(e.target===term)term.close();});
+
+  // Shortcuts: ⌘K / Ctrl K for the menu, ` for the terminal (when not typing)
+  addEventListener('keydown',e=>{
+    const typing=/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)||document.activeElement.isContentEditable;
+    if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();dlg.open?dlg.close():openK();}
+    else if(e.key==='`'&&!typing){e.preventDefault();term.open?term.close():openTerm();}
+  });
 }
 </script>
 
@@ -526,15 +704,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 import * as THREE from 'three';
 import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
 
-const stage=document.getElementById('stage'), canvas=document.getElementById('scene');
+/* One full-page scene. In the hero the objects float as a cluster inside #stage;
+   as you scroll they fly down and dock in the .slot3d beside each project. */
+const canvas=document.getElementById('scene'), stage=document.getElementById('stage'), hero=document.querySelector('.hero');
 const tip=document.getElementById('tip'), hint=document.getElementById('hint');
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(!matchMedia('(hover:hover)').matches)hint.textContent='Swipe to spin · tap an object to open its project';
 
 let renderer;
 try{renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true,powerPreference:'high-performance'});}
-catch(e){stage.classList.add('fallback');hint.hidden=true;throw e;}
-renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.75));
+catch(e){document.documentElement.classList.add('no3d');stage.classList.add('fallback');hint.hidden=true;throw e;}
+renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.5));
 renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;
 renderer.outputColorSpace=THREE.SRGBColorSpace;
 
@@ -542,29 +722,25 @@ const scene=new THREE.Scene();
 const pmrem=new THREE.PMREMGenerator(renderer);
 scene.environment=pmrem.fromScene(new RoomEnvironment(),.04).texture;
 scene.environmentIntensity=.35;
+const D=15, FOV=32;
+const camera=new THREE.PerspectiveCamera(FOV,1,.1,100);camera.position.set(0,0,D);camera.lookAt(0,0,0);
 
-const camera=new THREE.PerspectiveCamera(32,1,.1,100);
-camera.position.set(0,0,15);
-
-// Lighting: warm key upper left, vermilion fill below, cool steel rim behind
 const key=new THREE.DirectionalLight(0xfff1e0,2.6);key.position.set(-6,7,8);scene.add(key);
 const fill=new THREE.PointLight(0xff5533,40,30,2);fill.position.set(3,-5,4);scene.add(fill);
 const rim=new THREE.DirectionalLight(0x9db4c8,2.2);rim.position.set(6,3,-8);scene.add(rim);
 scene.add(new THREE.AmbientLight(0x2a1f2a,1));
 
-// Materials
 const M=(color,o={})=>new THREE.MeshPhysicalMaterial({color,roughness:.38,metalness:.1,clearcoat:.6,clearcoatRoughness:.3,...o});
 const C={bone:0xEDE6DA,graphite:0x2B2730,coral:0xFF5533,steel:0x9DB4C8,brass:0xC89B5A,ink:0x17141A};
 const mats={bone:M(C.bone),graphite:M(C.graphite,{roughness:.5}),coral:M(C.coral,{roughness:.3}),steel:M(C.steel,{metalness:.6,roughness:.28}),brass:M(C.brass,{metalness:.85,roughness:.32}),ink:M(C.ink,{roughness:.6})};
-const box=(w,h,d,m)=>new THREE.Mesh(new THREE.BoxGeometry(w,h,d,1,1,1),m);
+const box=(w,h,d,m)=>new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m);
 const cyl=(rt,rb,h,m,s=40)=>new THREE.Mesh(new THREE.CylinderGeometry(rt,rb,h,s),m);
 const sph=(r,m)=>new THREE.Mesh(new THREE.SphereGeometry(r,32,20),m);
 const at=(o,x=0,y=0,z=0,rx=0,ry=0,rz=0)=>{o.position.set(x,y,z);o.rotation.set(rx,ry,rz);return o;};
 
-// One object per project
 const build={
   enigma(){const g=new THREE.Group();
-    [-.32,0,.32].forEach((x,i)=>{const r=at(cyl(.56,.56,.24,i===1?mats.brass:mats.graphite),x,0,0,0,0,Math.PI/2);g.add(r);
+    [-.32,0,.32].forEach((x,i)=>{g.add(at(cyl(.56,.56,.24,i===1?mats.brass:mats.graphite),x,0,0,0,0,Math.PI/2));
       for(let k=0;k<26;k++){const a=k/26*Math.PI*2;g.add(at(box(.2,.05,.05,mats.brass),x,Math.cos(a)*.6,Math.sin(a)*.6,a,0,0));}});
     g.add(at(cyl(.07,.07,1.3,mats.steel),0,0,0,0,0,Math.PI/2));return g;},
   haggle(){const g=new THREE.Group();
@@ -576,130 +752,220 @@ const build={
   rescue(){const g=new THREE.Group();g.add(at(box(.95,.3,.55,mats.steel),0,0,0));g.add(at(box(.4,.18,.4,mats.graphite),-.1,.24,0));
     [[-.32,.3],[.32,.3],[-.32,-.3],[.32,-.3]].forEach(([x,z])=>g.add(at(cyl(.15,.15,.1,mats.ink,24),x,-.15,z,Math.PI/2)));
     g.add(at(sph(.11,mats.coral),.36,.22,0));return g;},
-  tilt(){const g=new THREE.Group();[-1,0,1].forEach(i=>{g.add(at(box(.6,.88,.025,i===0?mats.coral:mats.bone),i*.26,0,i===0?.04:0,0,0,-i*.32));});return g;},
+  tilt(){const g=new THREE.Group();[-1,0,1].forEach(i=>g.add(at(box(.6,.88,.025,i===0?mats.coral:mats.bone),i*.26,0,i===0?.04:0,0,0,-i*.32)));return g;},
   spy(){const g=new THREE.Group();let y=0;
-    for(let i=0;i<5;i++){const up=[1,1,0,1,1][i];const h=.25+((i*37)%5)*.08;y+=up?.12:-.1;
-      const m=up?mats.coral:mats.bone;g.add(at(box(.16,h,.16,m),-.5+i*.25,y,0));g.add(at(cyl(.02,.02,h+.3,m,8),-.5+i*.25,y,0));}
-    return g;},
+    for(let i=0;i<5;i++){const up=[1,1,0,1,1][i],h=.25+((i*37)%5)*.08;y+=up?.12:-.1;const m=up?mats.coral:mats.bone;
+      g.add(at(box(.16,h,.16,m),-.5+i*.25,y-.15,0));g.add(at(cyl(.02,.02,h+.3,m,8),-.5+i*.25,y-.15,0));}return g;},
   journal(){const g=new THREE.Group();g.add(at(box(.78,1,.16,mats.bone),.02,0,0));
     g.add(at(box(.84,1.06,.04,mats.graphite),0,0,.1));g.add(at(box(.84,1.06,.04,mats.graphite),0,0,-.1));
     g.add(at(box(.05,1.06,.24,mats.graphite),-.42,0,0));g.add(at(box(.3,.06,.01,mats.coral),.1,.25,.125));return g;},
-  cook(){const g=new THREE.Group();
-    const pts=[];for(let i=0;i<=16;i++){const a=i/16*Math.PI/2;pts.push(new THREE.Vector2(Math.sin(a)*.6+.001,-Math.cos(a)*.45));}
-    const bowl=new THREE.Mesh(new THREE.LatheGeometry(pts,48),M(C.bone,{side:THREE.DoubleSide}));g.add(bowl);
-    g.add(at(sph(.17,mats.coral),-.15,-.12,.05));g.add(at(sph(.14,mats.steel),.18,-.15,-.08));g.add(at(sph(.12,mats.brass),.02,-.1,.22));return g;},
+  cook(){const g=new THREE.Group(),pts=[];
+    for(let i=0;i<=16;i++){const a=i/16*Math.PI/2;pts.push(new THREE.Vector2(Math.sin(a)*.6+.001,-Math.cos(a)*.45+.15));}
+    g.add(new THREE.Mesh(new THREE.LatheGeometry(pts,48),M(C.bone,{side:THREE.DoubleSide})));
+    g.add(at(sph(.17,mats.coral),-.15,.03,.05));g.add(at(sph(.14,mats.steel),.18,0,-.08));g.add(at(sph(.12,mats.brass),.02,.05,.22));return g;},
   futureflow(){const g=new THREE.Group();for(let i=0;i<4;i++)g.add(at(box(.3,.18+i*.18,.5,mats.bone),-.45+i*.3,-.4+(.18+i*.18)/2,0));
     g.add(at(sph(.13,mats.coral),.45,.45,0));return g;},
   lumara(){const g=new THREE.Group();
     g.add(new THREE.Mesh(new THREE.IcosahedronGeometry(.5,0),M(C.steel,{metalness:.7,roughness:.2,flatShading:true})));
     g.add(new THREE.Mesh(new THREE.IcosahedronGeometry(.68,1),new THREE.MeshBasicMaterial({color:C.coral,wireframe:true,transparent:true,opacity:.45})));return g;},
-  mafia(){const g=new THREE.Group();
-    g.add(at(cyl(.62,.62,.05,mats.graphite,48),0,-.2,0));
-    const pts=[[.001,.32],[.3,.3],[.36,.1],[.38,-.18]].map(([x,y])=>new THREE.Vector2(x,y));
-    g.add(new THREE.Mesh(new THREE.LatheGeometry(pts,48),mats.graphite));
+  mafia(){const g=new THREE.Group();g.add(at(cyl(.62,.62,.05,mats.graphite,48),0,-.2,0));
+    g.add(new THREE.Mesh(new THREE.LatheGeometry([[.001,.32],[.3,.3],[.36,.1],[.38,-.18]].map(([x,y])=>new THREE.Vector2(x,y)),48),mats.graphite));
     g.add(at(cyl(.385,.385,.09,mats.coral,48),0,-.12,0));return g;}
 };
 
-// Read projects from the page so the scene and the content never drift apart
-const projects=[...document.querySelectorAll('[data-obj]')].map(el=>({el,id:el.id,key:el.dataset.obj,
+// Projects come from the page, so the scene always matches the content
+const projects=[...document.querySelectorAll('[data-obj]')].map(el=>({el,key:el.dataset.obj,slot:el.querySelector('.slot3d'),
   title:el.querySelector('h3').textContent.trim(),ctx:(el.querySelector('.ctx')||{}).textContent||''}));
-
-const cluster=new THREE.Group();scene.add(cluster);
-const objs=[];
 const N=projects.length, R=3.1, golden=Math.PI*(3-Math.sqrt(5));
+const objs=[];
 projects.forEach((p,i)=>{
   const make=build[p.key];if(!make)return;
   const holder=new THREE.Group(), obj=make();
   obj.traverse(m=>{if(m.isMesh)m.userData.pid=objs.length;});
-  // Fibonacci sphere, flattened a little so the cluster reads as a wide constellation
   const y=1-(i/(N-1))*2, r=Math.sqrt(1-y*y), th=golden*i;
-  holder.position.set(Math.cos(th)*r*R*1.15,y*R*.82,Math.sin(th)*r*R);
-  holder.add(obj);cluster.add(holder);
-  objs.push({p,holder,obj,phase:i*1.7,spin:(i%2?1:-1)*(.25+(i%3)*.1),hover:0});
+  holder.add(obj);scene.add(holder);
+  objs.push({p,holder,obj,base:new THREE.Vector3(Math.cos(th)*r*R*1.15,y*R*.82,Math.sin(th)*r*R),phase:i*1.7,spin:(i%2?1:-1)*(.25+(i%3)*.1),hover:0});
 });
-// a faint orbit ring for depth
-const ring=new THREE.Mesh(new THREE.TorusGeometry(R*1.25,.006,8,160),new THREE.MeshBasicMaterial({color:C.steel,transparent:true,opacity:.25}));
-ring.rotation.x=Math.PI/2.15;cluster.add(ring);
-const ring2=ring.clone();ring2.scale.setScalar(.72);ring2.rotation.set(Math.PI/2.6,.4,0);cluster.add(ring2);
-// drifting dust
-const dustGeo=new THREE.BufferGeometry(), dn=260, dp=new Float32Array(dn*3);
-for(let i=0;i<dn;i++){dp[i*3]=(Math.random()-.5)*22;dp[i*3+1]=(Math.random()-.5)*12;dp[i*3+2]=(Math.random()-.5)*10-2;}
+const rings=new THREE.Group();scene.add(rings);
+const ringMat=new THREE.MeshBasicMaterial({color:C.steel,transparent:true,opacity:.25});
+const ring=new THREE.Mesh(new THREE.TorusGeometry(R*1.25,.006,8,160),ringMat);ring.rotation.x=Math.PI/2.15;rings.add(ring);
+const ring2=ring.clone();ring2.scale.setScalar(.72);ring2.rotation.set(Math.PI/2.6,.4,0);rings.add(ring2);
+const dustGeo=new THREE.BufferGeometry(),dn=260,dp=new Float32Array(dn*3);
+for(let i=0;i<dn;i++){dp[i*3]=(Math.random()-.5)*26;dp[i*3+1]=(Math.random()-.5)*16;dp[i*3+2]=(Math.random()-.5)*10-2;}
 dustGeo.setAttribute('position',new THREE.BufferAttribute(dp,3));
-const dust=new THREE.Points(dustGeo,new THREE.PointsMaterial({color:0xF2EDE6,size:.03,transparent:true,opacity:.45,depthWrite:false}));scene.add(dust);
+const dustMat=new THREE.PointsMaterial({color:0xF2EDE6,size:.03,transparent:true,opacity:.45,depthWrite:false});
+const dust=new THREE.Points(dustGeo,dustMat);scene.add(dust);
 
-// Layout
-let W=1,H=1,mobile=false;
-function resize(){
-  W=stage.clientWidth;H=stage.clientHeight;mobile=W<600;
-  renderer.setSize(W,H,false);camera.aspect=W/H;
-  camera.position.z=mobile?15.5:15;
-  cluster.position.x=mobile?0:.4;
-  camera.updateProjectionMatrix();if(!running)render();
-}
-new ResizeObserver(resize).observe(stage);
+// Screen pixels -> world units on the z=0 plane (camera is fixed, looking straight at it)
+let W=0,H=0,wpp=1;
+function size(){const w=canvas.clientWidth,h=canvas.clientHeight;if(w===W&&h===H)return;W=w;H=h;
+  renderer.setSize(W,H,false);camera.aspect=W/H;camera.updateProjectionMatrix();wpp=2*D*Math.tan(FOV*Math.PI/360)/H;}
+const toWorld=(x,y,v)=>v.set((x-W/2)*wpp,(H/2-y)*wpp,0);
 
-// Interaction: drag to spin with inertia, hover to lift, click to open
-const ray=new THREE.Raycaster(), ptr=new THREE.Vector2(-9,-9);
-let rotY=0,rotX=.15,velY=reduce?0:.0025,velX=0,drag=null,moved=0,hot=-1,par={x:0,y:0};
-const pickables=()=>objs.map(o=>o.obj);
-function pick(){ray.setFromCamera(ptr,camera);const hit=ray.intersectObjects(pickables(),true)[0];return hit?hit.object.userData.pid:-1;}
-const setPtr=e=>{const b=canvas.getBoundingClientRect();ptr.set(((e.clientX-b.left)/b.width)*2-1,-((e.clientY-b.top)/b.height)*2+1);};
-canvas.addEventListener('pointerdown',e=>{setPtr(e);drag={x:e.clientX,y:e.clientY};moved=0;canvas.setPointerCapture(e.pointerId);});
-canvas.addEventListener('pointermove',e=>{
-  const b=canvas.getBoundingClientRect();
-  ptr.set(((e.clientX-b.left)/b.width)*2-1,-((e.clientY-b.top)/b.height)*2+1);
-  par.x=ptr.x;par.y=ptr.y;
+// Interaction lives on #stage (the hero area); the canvas itself never takes pointer events
+const ray=new THREE.Raycaster(),ptr=new THREE.Vector2(-9,-9);
+let rotY=0,rotX=.15,velY=reduce?0:.0025,drag=null,moved=0,hot=-1,par={x:0,y:0},blend=0;
+const setPtr=e=>{ptr.set(e.clientX/W*2-1,-(e.clientY/H)*2+1);};
+function pick(){if(blend>.25)return -1;ray.setFromCamera(ptr,camera);const hit=ray.intersectObjects(objs.map(o=>o.obj),true)[0];return hit?hit.object.userData.pid:-1;}
+stage.addEventListener('pointerdown',e=>{setPtr(e);drag={x:e.clientX,y:e.clientY};moved=0;stage.setPointerCapture(e.pointerId);wake();});
+stage.addEventListener('pointermove',e=>{setPtr(e);const b=stage.getBoundingClientRect();
+  par.x=((e.clientX-b.left)/b.width)*2-1;par.y=((e.clientY-b.top)/b.height)*2-1;
   if(drag){const dx=e.clientX-drag.x,dy=e.clientY-drag.y;moved+=Math.abs(dx)+Math.abs(dy);
-    velY=dx*.0006;velX=dy*.0004;rotY+=dx*.006;rotX=Math.max(-.6,Math.min(.8,rotX+dy*.004));drag={x:e.clientX,y:e.clientY};hint.style.opacity=0;}
-  if(!running)render();
-});
-canvas.addEventListener('pointerup',e=>{
-  if(drag&&moved<6){const id=pick();if(id>-1)open(objs[id].p);}
-  drag=null;if(!reduce&&Math.abs(velY)<.0015)velY=.0025*Math.sign(velY||1);
-});
-canvas.addEventListener('pointercancel',()=>{drag=null;});
-canvas.addEventListener('pointerleave',()=>{ptr.set(-9,-9);par.x=par.y=0;});
-function open(p){
-  const el=p.el;
+    velY=dx*.0006;rotY+=dx*.006;rotX=Math.max(-.6,Math.min(.8,rotX+dy*.004));drag={x:e.clientX,y:e.clientY};hint.style.opacity=0;}
+  wake();});
+stage.addEventListener('pointerup',()=>{if(drag&&moved<6){const id=pick();if(id>-1)open(objs[id].p);}drag=null;});
+stage.addEventListener('pointercancel',()=>{drag=null;});
+stage.addEventListener('pointerleave',()=>{ptr.set(-9,-9);par.x=par.y=0;wake();});
+function open(p){const el=p.el;
   if(el.hidden)document.querySelector('.filters [data-f="all"]').click();
   el.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
-  el.classList.remove('flash');void el.offsetWidth;el.classList.add('flash');
-}
+  el.classList.remove('flash');void el.offsetWidth;el.classList.add('flash');}
+window.__open3d=key=>{const o=objs.find(o=>o.p.key===key);if(o)open(o.p);};
 
-const v3=new THREE.Vector3();
-function updateTip(){
-  if(hot<0){tip.classList.remove('on');return;}
-  const o=objs[hot];o.holder.getWorldPosition(v3);v3.project(camera);
-  tip.style.left=((v3.x+1)/2*W)+'px';tip.style.top=((-v3.y+1)/2*H)+'px';
-  tip.querySelector('strong').textContent=o.p.title;tip.querySelector('span').textContent=o.p.ctx;
-  tip.classList.add('on');
-}
-
+const v=new THREE.Vector3(),cpos=new THREE.Vector3(),spos=new THREE.Vector3(),eul=new THREE.Euler(),q=new THREE.Quaternion();
+const ease=x=>x<=0?0:x>=1?1:x*x*(3-2*x);
 const clock=new THREE.Clock();let t=0;
 function render(){
+  size();
   const dt=Math.min(clock.getDelta(),.05);if(!reduce)t+=dt;
+  // scroll blend: 0 = cluster in the hero, 1 = every object docked in its section
+  const heroEnd=hero.offsetTop+hero.offsetHeight;
+  blend=Math.max(0,Math.min(1,scrollY/(heroEnd*.85)));
   const idle=reduce?0:(hot>-1?.0004:.0025)*Math.sign(velY||1);
   if(!drag){rotY+=velY*60*dt;rotX+=(.15-rotX)*.02;velY+=(idle-velY)*(hot>-1?.12:.02);}
-  cluster.rotation.y=rotY;cluster.rotation.x=rotX*.5;
-  // gentle parallax on the camera
-  camera.position.x+=(par.x*.8-camera.position.x)*.04;camera.position.y+=(par.y*.5-camera.position.y)*.04;camera.lookAt(cluster.position.x*.5,0,0);
-  hot=drag?-1:pick();if(hot>-1&&hint.style.opacity!=='0')hint.style.opacity=0;canvas.classList.toggle('hot',hot>-1);
+  eul.set(rotX*.5+par.y*.12,rotY+par.x*.25,0);q.setFromEuler(eul);
+  // where the cluster sits on screen, and how big
+  const r=stage.getBoundingClientRect();
+  toWorld(r.left+r.width/2,r.top+r.height/2,cpos);
+  const cs=Math.min(r.height*wpp/7.6,r.width*wpp/8.8);
+  rings.position.copy(cpos);rings.quaternion.copy(q);rings.scale.setScalar(cs);
+  ringMat.opacity=.25*(1-ease(blend*2));dustMat.opacity=.45*(1-blend*.7);
+  hot=drag?-1:pick();stage.classList.toggle('hot',hot>-1);
+  if(hot>-1&&hint.style.opacity!=='0')hint.style.opacity=0;
   objs.forEach((o,i)=>{
     o.hover+=((i===hot?1:0)-o.hover)*.15;
-    o.obj.position.y=Math.sin(t*.9+o.phase)*.12;
-    o.obj.rotation.y+=o.spin*dt*(1+o.hover*3);o.obj.rotation.x=Math.sin(t*.5+o.phase)*.25;
-    o.holder.scale.setScalar((mobile?.95:1)*(1+o.hover*.3));
-    o.holder.lookAt(camera.position);  // keep each object facing roughly forward so it reads
+    v.copy(o.base).applyQuaternion(q).multiplyScalar(cs).add(cpos);
+    const slot=o.p.slot, shown=slot&&slot.offsetParent!==null;
+    let b=ease(blend*1.25-i*.025);
+    let s=cs*(1+o.hover*.3);
+    if(shown){const sr=slot.getBoundingClientRect();toWorld(sr.left+sr.width/2,sr.top+sr.height/2,spos);
+      v.lerp(spos,b);s+=((sr.width*wpp)/1.35-s)*b;}
+    else{v.y-=b*18;}
+    o.holder.position.copy(v);o.holder.scale.setScalar(s);
+    o.holder.visible=shown||b<.95;
+    o.obj.position.y=Math.sin(t*.9+o.phase)*.12*(1-b*.5);
+    o.obj.rotation.y+=reduce?0:o.spin*dt*(1+o.hover*3);o.obj.rotation.x=Math.sin(t*.5+o.phase)*.25;
+    o.holder.lookAt(camera.position);
   });
   dust.rotation.y=t*.01;
-  renderer.render(scene,camera);updateTip();
+  renderer.render(scene,camera);
+  if(hot>-1){const o=objs[hot];o.holder.getWorldPosition(v).project(camera);
+    const sr=stage.getBoundingClientRect();
+    tip.style.left=((v.x+1)/2*W-sr.left)+'px';tip.style.top=((-v.y+1)/2*H-sr.top)+'px';
+    tip.querySelector('strong').textContent=o.p.title;tip.querySelector('span').textContent=o.p.ctx;tip.classList.add('on');}
+  else tip.classList.remove('on');
 }
-let running=false,visible=true;
-function loop(){if(!running)return;render();requestAnimationFrame(loop);}
-function setRun(on){if(reduce)on=false;if(on===running)return;running=on;if(on){clock.getDelta();loop();}}
-new IntersectionObserver(([e])=>{visible=e.isIntersecting;setRun(visible&&!document.hidden);}).observe(stage);
-document.addEventListener('visibilitychange',()=>setRun(visible&&!document.hidden));
-resize();render();setRun(true);
+// Run continuously while the tab is visible; with reduced motion, draw only when something changes
+let raf=0;
+function frame(){raf=0;render();if(!reduce&&!document.hidden)raf=requestAnimationFrame(frame);}
+function wake(){if(!raf)raf=requestAnimationFrame(frame);}
+addEventListener('scroll',wake,{passive:true});addEventListener('resize',wake);
+document.addEventListener('visibilitychange',wake);
+document.querySelectorAll('.filters button').forEach(b=>b.addEventListener('click',()=>setTimeout(wake,30)));
+new ResizeObserver(wake).observe(document.body);
+wake();
+</script>
+<script type="module">
+import * as THREE from 'three';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+
+/* GitHub activity as a 3D skyline: one tower per day, a row per weekday, a column per week.
+   Data from both accounts, summed per day. */
+const USERS=['ismailazfar','ismail-azfar'];
+const sec=document.getElementById('activity'), fig=document.getElementById('sky'), canvas=fig.querySelector('canvas');
+const tip=document.getElementById('sky-tip'), status=document.getElementById('sky-status');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fmt=new Intl.DateTimeFormat('en-GB',{weekday:'short',day:'numeric',month:'short',year:'numeric'});
+
+async function load(){
+  const res=await Promise.allSettled(USERS.map(u=>fetch(`https://github-contributions-api.jogruber.de/v4/${u}?y=last`).then(r=>{if(!r.ok)throw r.status;return r.json();})));
+  const days=new Map();
+  res.forEach(r=>{if(r.status!=='fulfilled'||!Array.isArray(r.value.contributions))return;
+    r.value.contributions.forEach(c=>days.set(c.date,(days.get(c.date)||0)+(+c.count||0)));});
+  if(!days.size)throw new Error('no data');
+  return [...days.entries()].sort((a,b)=>a[0]<b[0]?-1:1).map(([date,count])=>({date,count}));
+}
+
+function stats(list){
+  let total=0,best={count:-1},longest=0,run=0;
+  list.forEach(d=>{total+=d.count;if(d.count>best.count)best=d;run=d.count?run+1:0;longest=Math.max(longest,run);});
+  let current=0;for(let i=list.length-1;i>=0;i--){if(list[i].count)current++;else if(i<list.length-1)break;}
+  const set=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
+  set('sky-total',total.toLocaleString('en-GB'));set('sky-long',longest+(longest===1?' day':' days'));
+  set('sky-best',best.count.toLocaleString('en-GB'));set('sky-best-d',fmt.format(new Date(best.date+'T12:00:00')));
+  set('sky-cur',current+(current===1?' day':' days'));
+}
+
+function draw(list){
+  const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.5));renderer.outputColorSpace=THREE.SRGBColorSpace;
+  renderer.toneMapping=THREE.ACESFilmicToneMapping;
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(30,1,.1,400);camera.position.set(-30,34,58);
+  scene.add(new THREE.HemisphereLight(0xf2ede6,0x1a171c,1.4));
+  const sun=new THREE.DirectionalLight(0xfff1e0,2.2);sun.position.set(-20,40,20);scene.add(sun);
+  const rim=new THREE.DirectionalLight(0x9db4c8,1.4);rim.position.set(30,10,-30);scene.add(rim);
+
+  // lay days out by week column and weekday row
+  const first=new Date(list[0].date+'T12:00:00'), offset=first.getDay();
+  const cells=list.map((d,i)=>({...d,col:Math.floor((i+offset)/7),row:(i+offset)%7}));
+  const cols=cells[cells.length-1].col+1, max=Math.max(1,...cells.map(c=>c.count));
+  const S=1.1, geo=new THREE.BoxGeometry(.86,1,.86);geo.translate(0,.5,0);
+  const mat=new THREE.MeshStandardMaterial({roughness:.45,metalness:.15});
+  const mesh=new THREE.InstancedMesh(geo,mat,cells.length);
+  const m=new THREE.Matrix4(),col=new THREE.Color(),lo=new THREE.Color(0x4A2A2C),hi=new THREE.Color(0xFF5533),empty=new THREE.Color(0x2C2730);
+  const heights=cells.map(c=>c.count?.4+Math.pow(c.count/max,.6)*9:.12);
+  const grow=reduce?1:0;
+  const place=k=>{cells.forEach((c,i)=>{m.makeScale(1,Math.max(.05,heights[i]*k),1);m.setPosition((c.col-cols/2)*S,0,(c.row-3)*S);mesh.setMatrixAt(i,m);});mesh.instanceMatrix.needsUpdate=true;};
+  cells.forEach((c,i)=>{col.copy(c.count?lo.clone().lerp(hi,Math.pow(c.count/max,.5)):empty);mesh.setColorAt(i,col);});
+  place(grow||.001);scene.add(mesh);
+  const ground=new THREE.Mesh(new THREE.BoxGeometry(cols*S+2,.2,7*S+2),new THREE.MeshStandardMaterial({color:0x141116,roughness:.9}));ground.position.y=-.1;scene.add(ground);
+
+  const controls=new OrbitControls(camera,canvas);
+  controls.enableZoom=false;controls.enablePan=false;controls.enableDamping=true;
+  controls.autoRotate=!reduce;controls.autoRotateSpeed=.5;controls.minPolarAngle=.4;controls.maxPolarAngle=1.25;
+  controls.target.set(0,1.5,0);
+
+  const ray=new THREE.Raycaster(),ptr=new THREE.Vector2(-9,-9);let hot=-1;
+  canvas.addEventListener('pointermove',e=>{const b=canvas.getBoundingClientRect();ptr.set((e.clientX-b.left)/b.width*2-1,-((e.clientY-b.top)/b.height)*2+1);tip.style.left=(e.clientX-b.left)+'px';tip.style.top=(e.clientY-b.top)+'px';kick();});
+  canvas.addEventListener('pointerleave',()=>{ptr.set(-9,-9);kick();});
+  controls.addEventListener('change',kick);
+
+  let W=0,H=0;
+  const fit=()=>{const w=fig.clientWidth,h=fig.clientHeight;if(w===W&&h===H)return;W=w;H=h;renderer.setSize(W,H,false);camera.aspect=W/H;
+    // pull back on narrow screens so the whole year fits
+    const d=W<600?110:72;camera.position.setLength(d);camera.updateProjectionMatrix();};
+  let k=grow,raf=0,visible=false;
+  function frame(){raf=0;fit();
+    if(k<1){k=Math.min(1,k+.02);place(1-Math.pow(1-k,3));}
+    controls.update();
+    ray.setFromCamera(ptr,camera);const hit=ray.intersectObject(mesh)[0];const id=hit?hit.instanceId:-1;
+    if(id!==hot){hot=id;if(id>-1){const c=cells[id];tip.querySelector('strong').textContent=c.count+(c.count===1?' contribution':' contributions');
+      tip.querySelector('span').textContent=fmt.format(new Date(c.date+'T12:00:00'));}tip.classList.toggle('on',id>-1);canvas.style.cursor=id>-1?'pointer':'grab';}
+    renderer.render(scene,camera);
+    if(!raf&&visible&&!document.hidden&&(!reduce||k<1))raf=requestAnimationFrame(frame);}
+  function kick(){if(!raf)raf=requestAnimationFrame(frame);}
+  new IntersectionObserver(([e])=>{visible=e.isIntersecting;if(visible)kick();}).observe(fig);
+  document.addEventListener('visibilitychange',kick);addEventListener('resize',kick);
+  kick();
+}
+
+let started=false;
+new IntersectionObserver(async([e],io)=>{
+  if(!e.isIntersecting||started)return;started=true;io.disconnect();
+  try{const list=await load();stats(list);status.hidden=true;draw(list);}
+  catch(err){status.textContent='GitHub activity couldn’t load right now.';fig.hidden=true;document.getElementById('sky-stats').hidden=true;}
+},{rootMargin:'400px'}).observe(sec);
 </script>
 </body>
 </html>
