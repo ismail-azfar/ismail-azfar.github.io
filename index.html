@@ -3,12 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Ismail Azfar Portfolio</title>
+<title>Ismail Azfar · Computer Science, University of Manchester</title>
 <meta name="description" content="Ismail Azfar, Computer Science at The University of Manchester. Projects in simulation, quant trading, AI and games. Open to graduate roles.">
 <meta name="theme-color" content="#0E0C10">
 <meta property="og:title" content="Ismail Azfar | Portfolio">
 <meta property="og:description" content="Final-year Computer Science at The University of Manchester. AI systems, trading tools and products people use.">
-<meta property="og:image" content="rescue-scout.jpg">
+<link rel="canonical" href="https://ismailazfar.tech/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ismailazfar.tech/">
+<meta property="og:site_name" content="Ismail Azfar">
+<meta property="og:image" content="https://ismailazfar.tech/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Ismail Azfar, final-year Computer Science at The University of Manchester, with headline project results">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ismail Azfar | Portfolio">
+<meta name="twitter:description" content="Final-year Computer Science at The University of Manchester. AI systems, trading tools and products people use.">
+<meta name="twitter:image" content="https://ismailazfar.tech/og.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Ismail Azfar","url":"https://ismailazfar.tech/","jobTitle":"Computer Science student","affiliation":{"@type":"CollegeOrUniversity","name":"The University of Manchester"},"address":{"@type":"PostalAddress","addressLocality":"Manchester","addressCountry":"GB"},"sameAs":["https://github.com/ismailazfar","https://www.linkedin.com/in/ismail-azfar/"],"knowsAbout":["Machine learning","Quantitative trading","Full-stack web development","Computer vision"]}</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230E0C10'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='800' font-size='15' text-anchor='middle' fill='%23FF5533'%3EIA%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,8 +69,22 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
 .nav ul{display:flex;gap:4px 18px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
 .nav ul a{text-decoration:none;font-size:14px;color:var(--muted);display:inline-block;padding-block:6px}
 .nav ul a:hover{color:var(--ink)}
-@media (max-width:700px){.nav .wrap{flex-wrap:nowrap;gap:12px}.nav nav{flex:1}.nav nav{overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent)}
-  .nav nav::-webkit-scrollbar{display:none}.nav ul{flex-wrap:nowrap;padding-right:28px}.nav ul a{white-space:nowrap}.mark{flex:none}}
+.menu-btn{display:none;align-items:center;gap:8px;font:500 14px var(--f-body);color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:8px;padding:6px 12px;min-height:40px;cursor:pointer}
+.menu-btn i{display:grid;gap:4px}.menu-btn i::before,.menu-btn i::after{content:"";display:block;width:16px;height:1.5px;background:currentColor;transition:transform .2s}
+.nav.open .menu-btn i::before{transform:translateY(2.75px) rotate(45deg)}.nav.open .menu-btn i::after{transform:translateY(-2.75px) rotate(-45deg)}
+.nav-tools{display:flex;gap:8px;align-items:center}
+@media (max-width:760px){
+  .nav .wrap{flex-wrap:nowrap}
+  .menu-btn{display:inline-flex}
+  .nav nav{display:none;position:absolute;left:0;right:0;top:100%;background:var(--bg);border-bottom:1px solid var(--line);padding:4px var(--gut) 16px;box-shadow:0 24px 40px -24px #000}
+  .nav.open nav{display:block}
+  .nav ul{flex-direction:column;gap:0}
+  .nav ul a{display:block;padding:13px 0;font-size:17px;color:var(--ink);border-bottom:1px solid var(--line)}
+  .nav li:last-child a{border-bottom:0}
+}
+.nav ul a[aria-current="true"]{color:var(--ink)}
+.skip{position:absolute;left:12px;top:-60px;z-index:60;background:var(--accent);color:#1A0B07;padding:10px 14px;border-radius:8px;font-weight:600;text-decoration:none}
+.skip:focus{top:12px}
 
 /* hero */
 .hero{position:relative;isolation:isolate;overflow:hidden;border-bottom:1px solid var(--line)}
@@ -98,6 +124,7 @@ html.no3d .scene3d,html.no3d .slot3d{display:none!important}
 .tip strong{display:block;font:700 15px var(--f-display);font-stretch:115%}
 .tip span{font:400 12px var(--f-mono);color:var(--muted)}
 .tip#tip{position:fixed;z-index:35}
+.stage{background:radial-gradient(closest-side,color-mix(in srgb,var(--accent) 10%,transparent),transparent 70%)}
 .stage.fallback{background:radial-gradient(closest-side,color-mix(in srgb,var(--accent) 22%,transparent),transparent 70%)}
 @media (max-width:860px){
   .hero .wrap{grid-template-columns:minmax(0,1fr);min-height:0;padding-top:0;gap:0}
@@ -139,6 +166,24 @@ section{padding-block:clamp(48px,7vw,96px)}
 .body p.lead{font:600 clamp(18px,1.7vw,21px)/1.4 var(--f-body);color:var(--ink);max-width:54ch;text-wrap:pretty}
 .body p.lead em{font-style:normal;color:var(--accent)}
 .card .body p.lead{font-size:17px}
+.mc{display:grid;gap:12px;margin-top:6px;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--bg2)}
+.mc-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.mc-head strong{display:block;font:700 18px var(--f-display);font-stretch:110%}
+.mc-head span{font-size:14px;color:var(--muted)}
+.mc-head .btn{min-height:42px;font-size:14px}
+.mc-head .btn:disabled{opacity:.7;cursor:progress;transform:none}
+.mc-fig{position:relative;height:clamp(220px,28vw,280px)}
+.mc-fig canvas{position:absolute;inset:0;width:100%;height:100%}
+.mc-key{display:flex;gap:6px 16px;flex-wrap:wrap;list-style:none;margin:0;padding:0;font-size:13px;color:var(--muted)}
+.mc-key li{display:flex;align-items:center;gap:6px}
+.mc-key i{width:16px;height:0;border-top:2px solid}
+.k-act{border-color:var(--ink)!important}.k-med{border-color:var(--accent)!important;border-top-width:3px!important}.k-path{border-color:color-mix(in srgb,var(--steel) 45%,transparent)!important}.k-bh{border-color:var(--steel)!important;border-top-style:dashed!important}
+.mc-stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,150px),1fr));gap:12px 10px;padding-top:12px;border-top:1px solid var(--line)}
+.mc-stats div{display:grid;gap:3px;align-content:start}
+.mc-stats b{font:700 20px/1.1 var(--f-display);font-stretch:108%;font-variant-numeric:tabular-nums;white-space:nowrap}
+.mc.done #mc-med{color:var(--accent)}
+.mc-stats span{font-size:12px;line-height:1.35;color:var(--muted)}
+.body p.mc-note{font-size:13px;color:var(--muted)}
 .body p.ctx{font-family:var(--f-body);font-size:15px}
 .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;padding-block:14px;border-block:1px solid var(--line)}
 @media (max-width:560px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -291,10 +336,11 @@ dialog[open]{display:flex;flex-direction:column;margin-top:12vh}
 </style>
 </head>
 <body>
+<a class="skip" href="#work">Skip to projects</a>
 <header class="nav">
   <div class="wrap">
     <a class="mark" href="#top">Ismail Azfar<b>.</b></a>
-    <nav aria-label="Sections"><ul>
+    <nav aria-label="Sections" id="site-nav"><ul>
       <li><a href="#work">Work</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#certifications">Certifications</a></li>
@@ -304,7 +350,10 @@ dialog[open]{display:flex;flex-direction:column;margin-top:12vh}
       <li><a href="https://github.com/ismailazfar" target="_blank" rel="noopener">GitHub ↗</a></li>
       <li><a href="https://www.linkedin.com/in/ismail-azfar/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
     </ul></nav>
-    <button type="button" class="kbar" id="open-k" aria-label="Open the command menu" aria-haspopup="dialog"><span id="k-key">⌘K</span></button>
+    <div class="nav-tools">
+      <button type="button" class="kbar" id="open-k" aria-haspopup="dialog"><span id="k-key">⌘K</span><span class="sr-only"> command menu</span></button>
+      <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="site-nav"><i></i>Menu</button>
+    </div>
   </div>
 </header>
 
@@ -329,7 +378,7 @@ dialog[open]{display:flex;flex-direction:column;margin-top:12vh}
   </div>
 </section>
 
-<div class="strip" aria-label="At a glance">
+<div class="strip" role="region" aria-label="At a glance">
   <div class="wrap">
     <div class="deg"><img src="uom-logo.png" width="200" height="200" alt="The University of Manchester logo"><div><strong>BSc (Hons) Computer Science</strong><span>The University of Manchester · graduating 2027</span></div></div>
     <div><b class="hi">2</b><span>Businesses founded</span></div>
@@ -374,7 +423,7 @@ dialog[open]{display:flex;flex-direction:column;margin-top:12vh}
         <p>An interactive web simulator of the Enigma cipher machine. Instead of only mapping letters, it models the electromechanical path: current flows from a key through the plugboard, three rotors and the reflector, then back out to a lamp, and you can watch each hop as it happens.</p>
         <ul class="stack"><li>Next.js</li><li>TypeScript</li><li>Tailwind CSS</li><li>Circuit simulation</li></ul>
       </div></article>
-<article class="reel" id="p-haggle" data-obj="haggle" data-cat="ai software"><div class="rig"><a class="screen" href="https://www.youtube.com/watch?v=z1aH3oEOnHM" target="_blank" rel="noopener" aria-label="Watch the Haggle demo"><span class="tag">PayPal AI Hackathon</span><svg viewBox="0 0 640 400" role="img" aria-label="Haggle deal room: the buyer agent's offers rise and the seller agent's fall until they meet at an agreed £260"><defs><radialGradient id="hg" cx=".7" cy=".3" r=".8"><stop offset="0" stop-color="#2A1C24"/><stop offset="1" stop-color="#141116"/></radialGradient></defs><rect width="640" height="400" fill="url(#hg)"/><line x1="70" y1="90" x2="600" y2="90" stroke="#2C2730"/><line x1="70" y1="140" x2="600" y2="140" stroke="#2C2730"/><line x1="70" y1="190" x2="600" y2="190" stroke="#2C2730"/><line x1="70" y1="240" x2="600" y2="240" stroke="#2C2730"/><line x1="70" y1="290" x2="600" y2="290" stroke="#2C2730"/><text x="58" y="94" fill="#A69CA2" font-family="monospace" font-size="12" text-anchor="end">£320</text><text x="58" y="144" fill="#A69CA2" font-family="monospace" font-size="12" text-anchor="end">£300</text><text x="58" y="194" fill="#A69CA2" font-family="monospace" font-size="12" text-anchor="end">£280</text><text x="58" y="244" fill="#A69CA2" font-family="monospace" font-size="12" text-anchor="end">£260</text><text x="58" y="294" fill="#A69CA2" font-family="monospace" font-size="12" text-anchor="end">£240</text><polyline points="90,290 180,282 270,272 360,262 450,252 520,240" fill="none" stroke="#9DB4C8" stroke-width="4" stroke-linejoin="round"/>
+<article class="reel" id="p-haggle" data-obj="haggle" data-cat="ai software"><div class="rig"><a class="screen" href="https://www.youtube.com/watch?v=z1aH3oEOnHM" target="_blank" rel="noopener"><span class="tag">PayPal AI Hackathon</span><svg viewBox="0 0 640 400" role="img" aria-label="Haggle deal room: the buyer agent's offers rise and the seller agent's fall until they meet at an agreed £260"><defs><radialGradient id="hg" cx=".7" cy=".3" r=".8"><stop offset="0" stop-color="#2A1C24"/><stop offset="1" stop-color="#141116"/></radialGradient></defs><rect width="640" height="400" fill="url(#hg)"/><line x1="70" y1="90" x2="600" y2="90" stroke="#2C2730"/><line x1="70" y1="140" x2="600" y2="140" stroke="#2C2730"/><line x1="70" y1="190" x2="600" y2="190" stroke="#2C2730"/><line x1="70" y1="240" x2="600" y2="240" stroke="#2C2730"/><line x1="70" y1="290" x2="600" y2="290" stroke="#2C2730"/><text x="58" y="94" fill="#A69CA2" font-family="monospace" font-size="12" text-anchor="end">£320</text><text x="58" y="144" fill="#A69CA2" font-family="monospace" font-size="12" text-anchor="end">£300</text><text x="58" y="194" fill="#A69CA2" font-family="monospace" font-size="12" text-anchor="end">£280</text><text x="58" y="244" fill="#A69CA2" font-family="monospace" font-size="12" text-anchor="end">£260</text><text x="58" y="294" fill="#A69CA2" font-family="monospace" font-size="12" text-anchor="end">£240</text><polyline points="90,290 180,282 270,272 360,262 450,252 520,240" fill="none" stroke="#9DB4C8" stroke-width="4" stroke-linejoin="round"/>
 <polyline points="90,90 180,125 270,160 360,190 450,215 520,240" fill="none" stroke="#FF5533" stroke-width="4" stroke-linejoin="round"/>
 <g fill="#9DB4C8"><circle cx="90" cy="290" r="6"/><circle cx="180" cy="282" r="6"/><circle cx="270" cy="272" r="6"/><circle cx="360" cy="262" r="6"/><circle cx="450" cy="252" r="6"/></g><g fill="#FF5533"><circle cx="90" cy="90" r="6"/><circle cx="180" cy="125" r="6"/><circle cx="270" cy="160" r="6"/><circle cx="360" cy="190" r="6"/><circle cx="450" cy="215" r="6"/></g>
 <circle cx="520" cy="240" r="16" fill="#F2EDE6"/><path d="M512 240l6 6 11-12" fill="none" stroke="#141116" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -393,7 +442,7 @@ dialog[open]{display:flex;flex-direction:column;margin-top:12vh}
         <ul class="stack"><li>Next.js 15</li><li>TypeScript</li><li>PayPal Orders API</li><li>Qwen3 on Nebius</li><li>Server-Sent Events</li><li>Prisma</li><li>AG Grid</li></ul>
         <div class="links"><a href="https://haggle-production-b343.up.railway.app/" target="_blank" rel="noopener">Try it live ↗</a><a href="https://www.youtube.com/watch?v=z1aH3oEOnHM" target="_blank" rel="noopener">Watch the demo ↗</a><a href="https://devpost.com/software/haggle-ai-agents-negotiate-you-approve-paypal-settles" target="_blank" rel="noopener">Devpost ↗</a><a href="https://github.com/ashaz3256/haggle" target="_blank" rel="noopener">View code ↗</a></div>
       </div></article>
-<article class="reel" id="p-early" data-obj="early" data-cat="ai"><div class="rig"><a class="screen" href="https://youtu.be/T4TPnStSTC0" target="_blank" rel="noopener" aria-label="Watch the AI Early-Warning System demo"><span class="tag">IBM Z Datathon 2026</span><img loading="lazy" src="early-warning.jpg" width="720" height="450" alt="Ismail presenting the early-warning dashboard on a screen, pointing at a customer's rising missed-rent risk chart"><span class="play"><i></i>Watch demo</span></a></div><div class="body"><span class="slot3d" aria-hidden="true"></span>
+<article class="reel" id="p-early" data-obj="early" data-cat="ai"><div class="rig"><a class="screen" href="https://youtu.be/T4TPnStSTC0" target="_blank" rel="noopener"><span class="tag">IBM Z Datathon 2026</span><img loading="lazy" src="early-warning.jpg" width="720" height="450" alt="Ismail presenting the early-warning dashboard on a screen, pointing at a customer's rising missed-rent risk chart"><span class="play"><i></i>Watch demo</span></a></div><div class="body"><span class="slot3d" aria-hidden="true"></span>
         <div class="row"><span class="ctx">2026 · Team of four · 24 hours</span><span class="status done">Shipped</span></div>
         <h3>AI Early-Warning System</h3><p class="lead">Flagged <em>98.6%</em> of unseen customers before they missed rent, with a median <em>11 weeks’</em> notice.</p>
         <p>Problem debt shows up in bank data weeks before someone misses rent: a falling balance, payday loans, bounced bills. This system spots it early. An XGBoost model scores each customer's risk every week and explains why they were flagged, what-if scenarios show which changes would lower the risk, and IBM Granite running locally writes a supportive action plan with safety rules so it never suggests more borrowing and always points to free help. Everything runs on IBM LinuxONE, so financial data never leaves the machine.</p>
@@ -406,7 +455,7 @@ dialog[open]{display:flex;flex-direction:column;margin-top:12vh}
         <ul class="stack"><li>Python</li><li>XGBoost</li><li>Explainable AI</li><li>IBM Granite</li><li>IBM LinuxONE</li></ul>
         <div class="links"><a href="https://youtu.be/T4TPnStSTC0" target="_blank" rel="noopener">Watch the demo ↗</a></div>
       </div></article>
-<article class="reel" id="p-rescue" data-obj="rescue" data-cat="ai"><div class="rig"><a class="screen" href="https://www.youtube.com/watch?v=nEB8PAOwE6M" target="_blank" rel="noopener" aria-label="Watch the Rescue Scout demo"><span class="tag">Nebius × NVIDIA · Physical AI</span><img loading="lazy" src="rescue-scout.jpg" width="720" height="450" alt="Rescue Scout demo frame: the RC car beside its live camera feed and a mission log reading 'Door straight ahead, forward'"><span class="play"><i></i>Watch demo</span></a></div><div class="body"><span class="slot3d" aria-hidden="true"></span>
+<article class="reel" id="p-rescue" data-obj="rescue" data-cat="ai"><div class="rig"><a class="screen" href="https://www.youtube.com/watch?v=nEB8PAOwE6M" target="_blank" rel="noopener"><span class="tag">Nebius × NVIDIA · Physical AI</span><img loading="lazy" src="rescue-scout.jpg" width="720" height="450" alt="Rescue Scout demo frame: the RC car beside its live camera feed and a mission log reading 'Door straight ahead, forward'"><span class="play"><i></i>Watch demo</span></a></div><div class="body"><span class="slot3d" aria-hidden="true"></span>
         <div class="row"><span class="ctx">2026 · Team of five · Built in under 10 days</span><span class="status done">Shipped</span></div>
         <h3>Rescue Scout</h3><p class="lead">Found <em>5 out of 5</em> casualties in the final runs with one camera and a £5 sensor. No LiDAR, no map.</p>
         <p>A cheap scout robot that goes into a building before firefighters do, finds people and reports where they are. The prototype is a toy RC car with one FPV camera and a £5 ultrasonic sensor, with no LiDAR and no map. NVIDIA Nemotron vision models on Nebius Token Factory read the camera and choose each move, a planner surveys the room and heads for open doors, and a ground-plane calibration turns the single camera into a distance sensor.</p>
@@ -420,7 +469,7 @@ dialog[open]{display:flex;flex-direction:column;margin-top:12vh}
         <ul class="stack"><li>NVIDIA Nemotron</li><li>Nebius Token Factory</li><li>Vision-language models</li><li>Python</li><li>Embedded hardware</li></ul>
         <div class="links"><a href="https://www.youtube.com/watch?v=nEB8PAOwE6M" target="_blank" rel="noopener">Watch the demo ↗</a></div>
       </div></article>
-<article class="reel" id="p-tilt" data-obj="tilt" data-cat="games ai"><div class="rig"><a class="screen" href="https://youtu.be/GdtUvbLRCNg" target="_blank" rel="noopener" aria-label="Watch the Tilt demo"><span class="tag">OxHack 2026</span><img loading="lazy" src="tilt.jpg" width="720" height="376" alt="Tilt title screen: a red moon over a dark town and the words 'Night falls on Tilt'"><span class="play"><i></i>Watch demo</span></a></div><div class="body"><span class="slot3d" aria-hidden="true"></span>
+<article class="reel" id="p-tilt" data-obj="tilt" data-cat="games ai"><div class="rig"><a class="screen" href="https://youtu.be/GdtUvbLRCNg" target="_blank" rel="noopener"><span class="tag">OxHack 2026</span><img loading="lazy" src="tilt.jpg" width="720" height="376" alt="Tilt title screen: a red moon over a dark town and the words 'Night falls on Tilt'"><span class="play"><i></i>Watch demo</span></a></div><div class="body"><span class="slot3d" aria-hidden="true"></span>
         <div class="row"><span class="ctx">2026 · Team of two · Hackathon</span><span class="status done">Shipped</span></div>
         <h3>Tilt</h3><p class="lead">With the lie detector on, the AI town caught the mafia <em>94%</em> of the time when they gave clear tells, against 9% without it.</p>
         <p>A Mafia game played over a call against AI townsfolk who watch your face for tells. A lie-detection model trained on a published deception dataset feeds a Bayesian town: each AI player keeps a probability that each person is the mafia, trusts the detector only as far as it has proven itself on you, and votes to maximise the chance the mafia goes. Every character has its own ElevenLabs v4 voice with delivery cues, so the narrator whispers at night and players get sarcastic when they don't believe you.</p>
@@ -445,6 +494,20 @@ dialog[open]{display:flex;flex-direction:column;margin-top:12vh}
           <div><b>68.6%</b><span>Win rate</span></div>
         </div>
         <p class="ctx">60-day test window, 1,560 fifteen-minute bars.</p>
+<div class="mc" id="mc">
+  <div class="mc-head"><div><strong>Stress-test it yourself</strong><span>Reshuffle the 86 trades into 1,000 alternative histories and see how often the edge holds.</span></div>
+    <button type="button" class="btn" id="mc-run">Run 1,000 paths</button></div>
+  <div class="mc-fig"><canvas id="mc-cv" role="img" aria-label="Fan chart of 1,000 resampled equity paths for the strategy, with the actual path, the median path and the buy-and-hold return marked"></canvas></div>
+  <ul class="mc-key"><li><i class="k-act"></i>Actual order</li><li><i class="k-med"></i>Median path</li><li><i class="k-path"></i>1,000 resampled paths</li><li><i class="k-bh"></i>Buy &amp; hold +5.4%</li></ul>
+  <div class="mc-stats" aria-live="polite">
+    <div><b id="mc-med">–</b><span>Median final return</span></div>
+    <div><b id="mc-band">–</b><span>5th to 95th percentile</span></div>
+    <div><b id="mc-win">–</b><span>Paths ending in profit</span></div>
+    <div><b id="mc-bh">–</b><span>Paths beating buy &amp; hold</span></div>
+    <div><b id="mc-dd">–</b><span>Median worst drawdown</span></div>
+  </div>
+  <p class="mc-note">Runs live in your browser. Trade sizes are rebuilt from the published summary (86 trades, 68.6% win rate, +16.2% after costs), so results differ slightly from the paper, which resamples the real trade log.</p>
+</div>
         <ul class="stack"><li>Python</li><li>pandas</li><li>NumPy</li><li>Matplotlib</li><li>yfinance</li><li>LaTeX</li></ul>
         <div class="links"><a href="spy-backtesting-paper.pdf" target="_blank" rel="noopener">Read the paper (PDF) ↗</a><a href="https://github.com/ismailazfar/quant_thesis" target="_blank" rel="noopener">View code ↗</a></div>
       </div></article>
@@ -695,6 +758,19 @@ dialog[open]{display:flex;flex-direction:column;margin-top:12vh}
   document.getElementById('t-close').addEventListener('click',()=>term.close());
   term.addEventListener('click',e=>{if(e.target===term)term.close();});
 
+
+  // Phone menu
+  const navEl=document.querySelector('.nav'),menuBtn=document.getElementById('menu-btn');
+  const setMenu=o=>{navEl.classList.toggle('open',o);menuBtn.setAttribute('aria-expanded',o?'true':'false');};
+  menuBtn.addEventListener('click',()=>setMenu(!navEl.classList.contains('open')));
+  document.querySelectorAll('#site-nav a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+  addEventListener('keydown',e=>{if(e.key==='Escape'&&navEl.classList.contains('open')){setMenu(false);menuBtn.focus();}});
+  // Highlight the section you're in
+  const spy=[...document.querySelectorAll('#site-nav a[href^="#"]')].map(a=>[a,document.querySelector(a.getAttribute('href'))]).filter(p=>p[1]);
+  const spyIO=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;
+    spy.forEach(([a,el])=>{if(el===e.target)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');});}),{rootMargin:'-45% 0px -50% 0px'});
+  spy.forEach(p=>spyIO.observe(p[1]));
+
   // Shortcuts: ⌘K / Ctrl K for the menu, ` for the terminal (when not typing)
   addEventListener('keydown',e=>{
     const typing=/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)||document.activeElement.isContentEditable;
@@ -705,271 +781,16 @@ dialog[open]{display:flex;flex-direction:column;margin-top:12vh}
 </script>
 
 <script type="module">
-import * as THREE from 'three';
-import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
-
-/* One full-page scene. In the hero the objects float as a cluster inside #stage;
-   as you scroll they fly down and dock in the .slot3d beside each project. */
-const canvas=document.getElementById('scene'), stage=document.getElementById('stage'), hero=document.querySelector('.hero');
-const tip=document.getElementById('tip'), hint=document.getElementById('hint');
-const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-if(!matchMedia('(hover:hover)').matches)hint.textContent='Swipe to spin · tap an object to open its project';
-
-let renderer;
-try{renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true,powerPreference:'high-performance'});}
-catch(e){document.documentElement.classList.add('no3d');stage.classList.add('fallback');hint.hidden=true;throw e;}
-renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.5));
-renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;
-renderer.outputColorSpace=THREE.SRGBColorSpace;
-
-const scene=new THREE.Scene();
-const pmrem=new THREE.PMREMGenerator(renderer);
-scene.environment=pmrem.fromScene(new RoomEnvironment(),.04).texture;
-scene.environmentIntensity=.35;
-const D=15, FOV=32;
-const camera=new THREE.PerspectiveCamera(FOV,1,.1,100);camera.position.set(0,0,D);camera.lookAt(0,0,0);
-
-const key=new THREE.DirectionalLight(0xfff1e0,2.6);key.position.set(-6,7,8);scene.add(key);
-const fill=new THREE.PointLight(0xff5533,40,30,2);fill.position.set(3,-5,4);scene.add(fill);
-const rim=new THREE.DirectionalLight(0x9db4c8,2.2);rim.position.set(6,3,-8);scene.add(rim);
-scene.add(new THREE.AmbientLight(0x2a1f2a,1));
-
-const M=(color,o={})=>new THREE.MeshPhysicalMaterial({color,roughness:.38,metalness:.1,clearcoat:.6,clearcoatRoughness:.3,...o});
-const C={bone:0xEDE6DA,graphite:0x2B2730,coral:0xFF5533,steel:0x9DB4C8,brass:0xC89B5A,ink:0x17141A};
-const mats={bone:M(C.bone),graphite:M(C.graphite,{roughness:.5}),coral:M(C.coral,{roughness:.3}),steel:M(C.steel,{metalness:.6,roughness:.28}),brass:M(C.brass,{metalness:.85,roughness:.32}),ink:M(C.ink,{roughness:.6})};
-const box=(w,h,d,m)=>new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m);
-const cyl=(rt,rb,h,m,s=40)=>new THREE.Mesh(new THREE.CylinderGeometry(rt,rb,h,s),m);
-const sph=(r,m)=>new THREE.Mesh(new THREE.SphereGeometry(r,32,20),m);
-const at=(o,x=0,y=0,z=0,rx=0,ry=0,rz=0)=>{o.position.set(x,y,z);o.rotation.set(rx,ry,rz);return o;};
-
-const build={
-  enigma(){const g=new THREE.Group();
-    [-.32,0,.32].forEach((x,i)=>{g.add(at(cyl(.56,.56,.24,i===1?mats.brass:mats.graphite),x,0,0,0,0,Math.PI/2));
-      for(let k=0;k<26;k++){const a=k/26*Math.PI*2;g.add(at(box(.2,.05,.05,mats.brass),x,Math.cos(a)*.6,Math.sin(a)*.6,a,0,0));}});
-    g.add(at(cyl(.07,.07,1.3,mats.steel),0,0,0,0,0,Math.PI/2));return g;},
-  haggle(){const g=new THREE.Group();
-    g.add(at(cyl(.5,.5,.1,mats.coral),-.2,.05,0,Math.PI/2.4,0,.2));
-    g.add(at(cyl(.5,.5,.1,mats.bone),.22,-.08,.12,Math.PI/2.2,0,-.3));
-    g.add(at(new THREE.Mesh(new THREE.TorusGeometry(.5,.035,12,48),mats.brass),.22,-.08,.12,Math.PI/2.2-Math.PI/2,0,-.3));return g;},
-  early(){const g=new THREE.Group();g.add(at(box(1.2,.08,.6,mats.graphite),0,-.5,0));
-    [.25,.45,.7,1].forEach((h,i)=>g.add(at(box(.22,h,.22,i===3?mats.coral:mats.bone),-.42+i*.28,-.46+h/2,0)));return g;},
-  rescue(){const g=new THREE.Group();g.add(at(box(.95,.3,.55,mats.steel),0,0,0));g.add(at(box(.4,.18,.4,mats.graphite),-.1,.24,0));
-    [[-.32,.3],[.32,.3],[-.32,-.3],[.32,-.3]].forEach(([x,z])=>g.add(at(cyl(.15,.15,.1,mats.ink,24),x,-.15,z,Math.PI/2)));
-    g.add(at(sph(.11,mats.coral),.36,.22,0));return g;},
-  tilt(){const g=new THREE.Group();[-1,0,1].forEach(i=>g.add(at(box(.6,.88,.025,i===0?mats.coral:mats.bone),i*.26,0,i===0?.04:0,0,0,-i*.32)));return g;},
-  spy(){const g=new THREE.Group();let y=0;
-    for(let i=0;i<5;i++){const up=[1,1,0,1,1][i],h=.25+((i*37)%5)*.08;y+=up?.12:-.1;const m=up?mats.coral:mats.bone;
-      g.add(at(box(.16,h,.16,m),-.5+i*.25,y-.15,0));g.add(at(cyl(.02,.02,h+.3,m,8),-.5+i*.25,y-.15,0));}return g;},
-  journal(){const g=new THREE.Group();g.add(at(box(.78,1,.16,mats.bone),.02,0,0));
-    g.add(at(box(.84,1.06,.04,mats.graphite),0,0,.1));g.add(at(box(.84,1.06,.04,mats.graphite),0,0,-.1));
-    g.add(at(box(.05,1.06,.24,mats.graphite),-.42,0,0));g.add(at(box(.3,.06,.01,mats.coral),.1,.25,.125));return g;},
-  cook(){const g=new THREE.Group(),pts=[];
-    for(let i=0;i<=16;i++){const a=i/16*Math.PI/2;pts.push(new THREE.Vector2(Math.sin(a)*.6+.001,-Math.cos(a)*.45+.15));}
-    g.add(new THREE.Mesh(new THREE.LatheGeometry(pts,48),M(C.bone,{side:THREE.DoubleSide})));
-    g.add(at(sph(.17,mats.coral),-.15,.03,.05));g.add(at(sph(.14,mats.steel),.18,0,-.08));g.add(at(sph(.12,mats.brass),.02,.05,.22));return g;},
-  futureflow(){const g=new THREE.Group();for(let i=0;i<4;i++)g.add(at(box(.3,.18+i*.18,.5,mats.bone),-.45+i*.3,-.4+(.18+i*.18)/2,0));
-    g.add(at(sph(.13,mats.coral),.45,.45,0));return g;},
-  lumara(){const g=new THREE.Group();
-    g.add(new THREE.Mesh(new THREE.IcosahedronGeometry(.5,0),M(C.steel,{metalness:.7,roughness:.2,flatShading:true})));
-    g.add(new THREE.Mesh(new THREE.IcosahedronGeometry(.68,1),new THREE.MeshBasicMaterial({color:C.coral,wireframe:true,transparent:true,opacity:.45})));return g;},
-  mafia(){const g=new THREE.Group();g.add(at(cyl(.62,.62,.05,mats.graphite,48),0,-.2,0));
-    g.add(new THREE.Mesh(new THREE.LatheGeometry([[.001,.32],[.3,.3],[.36,.1],[.38,-.18]].map(([x,y])=>new THREE.Vector2(x,y)),48),mats.graphite));
-    g.add(at(cyl(.385,.385,.09,mats.coral,48),0,-.12,0));return g;}
-};
-
-// Projects come from the page, so the scene always matches the content
-const projects=[...document.querySelectorAll('[data-obj]')].map(el=>({el,key:el.dataset.obj,slot:el.querySelector('.slot3d'),
-  title:el.querySelector('h3').textContent.trim(),ctx:(el.querySelector('.ctx')||{}).textContent||''}));
-const N=projects.length, R=3.1, golden=Math.PI*(3-Math.sqrt(5));
-const objs=[];
-projects.forEach((p,i)=>{
-  const make=build[p.key];if(!make)return;
-  const holder=new THREE.Group(), obj=make();
-  obj.traverse(m=>{if(m.isMesh)m.userData.pid=objs.length;});
-  const y=1-(i/(N-1))*2, r=Math.sqrt(1-y*y), th=golden*i;
-  holder.add(obj);scene.add(holder);
-  objs.push({p,holder,obj,base:new THREE.Vector3(Math.cos(th)*r*R*1.15,y*R*.82,Math.sin(th)*r*R),phase:i*1.7,spin:(i%2?1:-1)*(.25+(i%3)*.1),hover:0});
-});
-const rings=new THREE.Group();scene.add(rings);
-const ringMat=new THREE.MeshBasicMaterial({color:C.steel,transparent:true,opacity:.25});
-const ring=new THREE.Mesh(new THREE.TorusGeometry(R*1.25,.006,8,160),ringMat);ring.rotation.x=Math.PI/2.15;rings.add(ring);
-const ring2=ring.clone();ring2.scale.setScalar(.72);ring2.rotation.set(Math.PI/2.6,.4,0);rings.add(ring2);
-const dustGeo=new THREE.BufferGeometry(),dn=260,dp=new Float32Array(dn*3);
-for(let i=0;i<dn;i++){dp[i*3]=(Math.random()-.5)*26;dp[i*3+1]=(Math.random()-.5)*16;dp[i*3+2]=(Math.random()-.5)*10-2;}
-dustGeo.setAttribute('position',new THREE.BufferAttribute(dp,3));
-const dustMat=new THREE.PointsMaterial({color:0xF2EDE6,size:.03,transparent:true,opacity:.45,depthWrite:false});
-const dust=new THREE.Points(dustGeo,dustMat);scene.add(dust);
-
-// Screen pixels -> world units on the z=0 plane (camera is fixed, looking straight at it)
-let W=0,H=0,wpp=1;
-function size(){const w=canvas.clientWidth,h=canvas.clientHeight;if(w===W&&h===H)return;W=w;H=h;
-  renderer.setSize(W,H,false);camera.aspect=W/H;camera.updateProjectionMatrix();wpp=2*D*Math.tan(FOV*Math.PI/360)/H;}
-const toWorld=(x,y,v)=>v.set((x-W/2)*wpp,(H/2-y)*wpp,0);
-
-// Interaction lives on #stage (the hero area); the canvas itself never takes pointer events
-const ray=new THREE.Raycaster(),ptr=new THREE.Vector2(-9,-9);
-let rotY=0,rotX=.15,velY=reduce?0:.0025,drag=null,moved=0,hot=-1,par={x:0,y:0},blend=0;
-const setPtr=e=>{ptr.set(e.clientX/W*2-1,-(e.clientY/H)*2+1);};
-function pick(){if(blend>.25)return -1;ray.setFromCamera(ptr,camera);const hit=ray.intersectObjects(objs.map(o=>o.obj),true)[0];return hit?hit.object.userData.pid:-1;}
-stage.addEventListener('pointerdown',e=>{setPtr(e);drag={x:e.clientX,y:e.clientY};moved=0;stage.setPointerCapture(e.pointerId);wake();});
-stage.addEventListener('pointermove',e=>{setPtr(e);const b=stage.getBoundingClientRect();
-  par.x=((e.clientX-b.left)/b.width)*2-1;par.y=((e.clientY-b.top)/b.height)*2-1;
-  if(drag){const dx=e.clientX-drag.x,dy=e.clientY-drag.y;moved+=Math.abs(dx)+Math.abs(dy);
-    velY=dx*.0006;rotY+=dx*.006;rotX=Math.max(-.6,Math.min(.8,rotX+dy*.004));drag={x:e.clientX,y:e.clientY};hint.style.opacity=0;}
-  wake();});
-stage.addEventListener('pointerup',()=>{if(drag&&moved<6){const id=pick();if(id>-1)open(objs[id].p);}drag=null;});
-stage.addEventListener('pointercancel',()=>{drag=null;});
-stage.addEventListener('pointerleave',()=>{ptr.set(-9,-9);par.x=par.y=0;wake();});
-function open(p){const el=p.el;
-  if(el.hidden)document.querySelector('.filters [data-f="all"]').click();
-  el.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
-  el.classList.remove('flash');void el.offsetWidth;el.classList.add('flash');}
-window.__open3d=key=>{const o=objs.find(o=>o.p.key===key);if(o)open(o.p);};
-
-const v=new THREE.Vector3(),cpos=new THREE.Vector3(),spos=new THREE.Vector3(),eul=new THREE.Euler(),q=new THREE.Quaternion();
-const ease=x=>x<=0?0:x>=1?1:x*x*(3-2*x);
-const clock=new THREE.Clock();let t=0;
-function render(){
-  size();
-  const dt=Math.min(clock.getDelta(),.05);if(!reduce)t+=dt;
-  // scroll blend: 0 = cluster in the hero, 1 = every object docked in its section
-  const heroEnd=hero.offsetTop+hero.offsetHeight;
-  blend=Math.max(0,Math.min(1,scrollY/(heroEnd*.85)));
-  const idle=reduce?0:(hot>-1?.0004:.0025)*Math.sign(velY||1);
-  if(!drag){rotY+=velY*60*dt;rotX+=(.15-rotX)*.02;velY+=(idle-velY)*(hot>-1?.12:.02);}
-  eul.set(rotX*.5+par.y*.12,rotY+par.x*.25,0);q.setFromEuler(eul);
-  // where the cluster sits on screen, and how big
-  const r=stage.getBoundingClientRect();
-  toWorld(r.left+r.width/2,r.top+r.height/2,cpos);
-  const cs=Math.min(r.height*wpp/7.6,r.width*wpp/8.8);
-  rings.position.copy(cpos);rings.quaternion.copy(q);rings.scale.setScalar(cs);
-  ringMat.opacity=.25*(1-ease(blend*2));dustMat.opacity=.45*(1-blend*.7);
-  hot=drag?-1:pick();stage.classList.toggle('hot',hot>-1);
-  if(hot>-1&&hint.style.opacity!=='0')hint.style.opacity=0;
-  objs.forEach((o,i)=>{
-    o.hover+=((i===hot?1:0)-o.hover)*.15;
-    v.copy(o.base).applyQuaternion(q).multiplyScalar(cs).add(cpos);
-    const slot=o.p.slot, shown=slot&&slot.offsetParent!==null;
-    let b=ease(blend*1.25-i*.025);
-    let s=cs*(1+o.hover*.3);
-    if(shown){const sr=slot.getBoundingClientRect();toWorld(sr.left+sr.width/2,sr.top+sr.height/2,spos);
-      v.lerp(spos,b);s+=((sr.width*wpp)/1.35-s)*b;}
-    else{v.y-=b*18;}
-    o.holder.position.copy(v);o.holder.scale.setScalar(s);
-    o.holder.visible=shown||b<.95;
-    o.obj.position.y=Math.sin(t*.9+o.phase)*.12*(1-b*.5);
-    o.obj.rotation.y+=reduce?0:o.spin*dt*(1+o.hover*3);o.obj.rotation.x=Math.sin(t*.5+o.phase)*.25;
-    o.holder.lookAt(camera.position);
-  });
-  dust.rotation.y=t*.01;
-  renderer.render(scene,camera);
-  if(hot>-1){const o=objs[hot];o.holder.getWorldPosition(v).project(camera);
-    const sr=stage.getBoundingClientRect();
-    tip.style.left=((v.x+1)/2*W)+'px';tip.style.top=((-v.y+1)/2*H)+'px';
-    tip.querySelector('strong').textContent=o.p.title;tip.querySelector('span').textContent=o.p.ctx;tip.classList.add('on');}
-  else tip.classList.remove('on');
-}
-// Run continuously while the tab is visible; with reduced motion, draw only when something changes
-let raf=0;
-function frame(){raf=0;render();if(!reduce&&!document.hidden)raf=requestAnimationFrame(frame);}
-function wake(){if(!raf)raf=requestAnimationFrame(frame);}
-addEventListener('scroll',wake,{passive:true});addEventListener('resize',wake);
-document.addEventListener('visibilitychange',wake);
-document.querySelectorAll('.filters button').forEach(b=>b.addEventListener('click',()=>setTimeout(wake,30)));
-new ResizeObserver(wake).observe(document.body);
-wake();
+// Load the 3D only after the page's text is up, so content appears first
+const fail=()=>{document.documentElement.classList.add('no3d');const st=document.getElementById('stage');st.classList.add('fallback');const h=document.getElementById('hint');if(h)h.hidden=true;};
+const idle=cb=>'requestIdleCallback' in window?requestIdleCallback(cb,{timeout:2000}):setTimeout(cb,500);
+const start=()=>idle(()=>import('./js/scene.js').catch(fail));
+if(document.readyState==='complete')start();else addEventListener('load',start,{once:true});
+// GitHub skyline and Monte Carlo demo load when they come near the screen
+const near=(id,fn)=>{const el=document.getElementById(id);if(!el)return;new IntersectionObserver(([e],io)=>{if(e.isIntersecting){io.disconnect();fn();}},{rootMargin:'600px'}).observe(el);};
+near('activity',()=>import('./js/skyline.js').catch(()=>{const s=document.getElementById('sky-status');if(s)s.textContent='GitHub activity couldn’t load right now.';}));
+near('mc',()=>import('./js/mc.js'));
 </script>
-<script type="module">
-import * as THREE from 'three';
-import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 
-/* GitHub activity as a 3D skyline: one tower per day, a row per weekday, a column per week.
-   Data from both accounts, summed per day. */
-const USERS=['ismailazfar','ismail-azfar'];
-const sec=document.getElementById('activity'), fig=document.getElementById('sky'), canvas=fig.querySelector('canvas');
-const tip=document.getElementById('sky-tip'), status=document.getElementById('sky-status');
-const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const fmt=new Intl.DateTimeFormat('en-GB',{weekday:'short',day:'numeric',month:'short',year:'numeric'});
-
-async function load(){
-  const res=await Promise.allSettled(USERS.map(u=>fetch(`https://github-contributions-api.jogruber.de/v4/${u}?y=last`).then(r=>{if(!r.ok)throw r.status;return r.json();})));
-  const days=new Map();
-  res.forEach(r=>{if(r.status!=='fulfilled'||!Array.isArray(r.value.contributions))return;
-    r.value.contributions.forEach(c=>days.set(c.date,(days.get(c.date)||0)+(+c.count||0)));});
-  if(!days.size)throw new Error('no data');
-  return [...days.entries()].sort((a,b)=>a[0]<b[0]?-1:1).map(([date,count])=>({date,count}));
-}
-
-function stats(list){
-  let total=0,best={count:-1},longest=0,run=0;
-  list.forEach(d=>{total+=d.count;if(d.count>best.count)best=d;run=d.count?run+1:0;longest=Math.max(longest,run);});
-  let current=0;for(let i=list.length-1;i>=0;i--){if(list[i].count)current++;else if(i<list.length-1)break;}
-  const set=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
-  set('sky-total',total.toLocaleString('en-GB'));set('sky-long',longest+(longest===1?' day':' days'));
-  set('sky-best',best.count.toLocaleString('en-GB'));set('sky-best-d',fmt.format(new Date(best.date+'T12:00:00')));
-  set('sky-cur',current+(current===1?' day':' days'));
-}
-
-function draw(list){
-  const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
-  renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.5));renderer.outputColorSpace=THREE.SRGBColorSpace;
-  renderer.toneMapping=THREE.ACESFilmicToneMapping;
-  const scene=new THREE.Scene();
-  const camera=new THREE.PerspectiveCamera(30,1,.1,400);camera.position.set(-30,34,58);
-  scene.add(new THREE.HemisphereLight(0xf2ede6,0x1a171c,1.4));
-  const sun=new THREE.DirectionalLight(0xfff1e0,2.2);sun.position.set(-20,40,20);scene.add(sun);
-  const rim=new THREE.DirectionalLight(0x9db4c8,1.4);rim.position.set(30,10,-30);scene.add(rim);
-
-  // lay days out by week column and weekday row
-  const first=new Date(list[0].date+'T12:00:00'), offset=first.getDay();
-  const cells=list.map((d,i)=>({...d,col:Math.floor((i+offset)/7),row:(i+offset)%7}));
-  const cols=cells[cells.length-1].col+1, max=Math.max(1,...cells.map(c=>c.count));
-  const S=1.1, geo=new THREE.BoxGeometry(.86,1,.86);geo.translate(0,.5,0);
-  const mat=new THREE.MeshStandardMaterial({roughness:.45,metalness:.15});
-  const mesh=new THREE.InstancedMesh(geo,mat,cells.length);
-  const m=new THREE.Matrix4(),col=new THREE.Color(),lo=new THREE.Color(0x4A2A2C),hi=new THREE.Color(0xFF5533),empty=new THREE.Color(0x2C2730);
-  const heights=cells.map(c=>c.count?.4+Math.pow(c.count/max,.6)*9:.12);
-  const grow=reduce?1:0;
-  const place=k=>{cells.forEach((c,i)=>{m.makeScale(1,Math.max(.05,heights[i]*k),1);m.setPosition((c.col-cols/2)*S,0,(c.row-3)*S);mesh.setMatrixAt(i,m);});mesh.instanceMatrix.needsUpdate=true;};
-  cells.forEach((c,i)=>{col.copy(c.count?lo.clone().lerp(hi,Math.pow(c.count/max,.5)):empty);mesh.setColorAt(i,col);});
-  place(grow||.001);scene.add(mesh);
-  const ground=new THREE.Mesh(new THREE.BoxGeometry(cols*S+2,.2,7*S+2),new THREE.MeshStandardMaterial({color:0x141116,roughness:.9}));ground.position.y=-.1;scene.add(ground);
-
-  const controls=new OrbitControls(camera,canvas);
-  controls.enableZoom=false;controls.enablePan=false;controls.enableDamping=true;
-  controls.autoRotate=!reduce;controls.autoRotateSpeed=.5;controls.minPolarAngle=.4;controls.maxPolarAngle=1.25;
-  controls.target.set(0,1.5,0);
-
-  const ray=new THREE.Raycaster(),ptr=new THREE.Vector2(-9,-9);let hot=-1;
-  canvas.addEventListener('pointermove',e=>{const b=canvas.getBoundingClientRect();ptr.set((e.clientX-b.left)/b.width*2-1,-((e.clientY-b.top)/b.height)*2+1);tip.style.left=(e.clientX-b.left)+'px';tip.style.top=(e.clientY-b.top)+'px';kick();});
-  canvas.addEventListener('pointerleave',()=>{ptr.set(-9,-9);kick();});
-  controls.addEventListener('change',kick);
-
-  let W=0,H=0;
-  const fit=()=>{const w=fig.clientWidth,h=fig.clientHeight;if(w===W&&h===H)return;W=w;H=h;renderer.setSize(W,H,false);camera.aspect=W/H;
-    // pull back on narrow screens so the whole year fits
-    const d=W<600?110:72;camera.position.setLength(d);camera.updateProjectionMatrix();};
-  let k=grow,raf=0,visible=false;
-  function frame(){raf=0;fit();
-    if(k<1){k=Math.min(1,k+.02);place(1-Math.pow(1-k,3));}
-    controls.update();
-    ray.setFromCamera(ptr,camera);const hit=ray.intersectObject(mesh)[0];const id=hit?hit.instanceId:-1;
-    if(id!==hot){hot=id;if(id>-1){const c=cells[id];tip.querySelector('strong').textContent=c.count+(c.count===1?' contribution':' contributions');
-      tip.querySelector('span').textContent=fmt.format(new Date(c.date+'T12:00:00'));}tip.classList.toggle('on',id>-1);canvas.style.cursor=id>-1?'pointer':'grab';}
-    renderer.render(scene,camera);
-    if(!raf&&visible&&!document.hidden&&(!reduce||k<1))raf=requestAnimationFrame(frame);}
-  function kick(){if(!raf)raf=requestAnimationFrame(frame);}
-  new IntersectionObserver(([e])=>{visible=e.isIntersecting;if(visible)kick();}).observe(fig);
-  document.addEventListener('visibilitychange',kick);addEventListener('resize',kick);
-  kick();
-}
-
-let started=false;
-new IntersectionObserver(async([e],io)=>{
-  if(!e.isIntersecting||started)return;started=true;io.disconnect();
-  try{const list=await load();stats(list);status.hidden=true;draw(list);}
-  catch(err){status.textContent='GitHub activity couldn’t load right now.';fig.hidden=true;document.getElementById('sky-stats').hidden=true;}
-},{rootMargin:'400px'}).observe(sec);
-</script>
 </body>
 </html>

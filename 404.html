@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found · Ismail Azfar</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0E0C10">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230E0C10'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='800' font-size='15' text-anchor='middle' fill='%23FF5533'%3EIA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112..125,700..800&family=Instrument+Sans:wght@400;600&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+/* Same studio as the portfolio: one Enigma rotor that has stepped to the wrong letter */
+:root{color-scheme:dark;--bg:#0E0C10;--panel:#1A171C;--line:#2C2730;--ink:#F2EDE6;--muted:#A69CA2;--accent:#FF5533;--brass:#C89B5A}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:radial-gradient(60% 60% at 50% 35%,#2A1C24,var(--bg) 70%);color:var(--ink);font:16px/1.6 "Instrument Sans",system-ui,sans-serif;padding:32px max(16px,5vw)}
+main{display:grid;gap:22px;justify-items:center;text-align:center;max-width:560px}
+.rotors{display:flex;gap:10px}
+.r{width:clamp(56px,14vw,84px);aspect-ratio:3/4;display:grid;place-items:center;border:1px solid var(--line);border-radius:10px;background:linear-gradient(var(--panel),#141116);
+  font:800 clamp(34px,9vw,54px) "Archivo",Arial,sans-serif;font-stretch:120%;box-shadow:inset 0 10px 14px -10px #000,inset 0 -10px 14px -10px #000}
+.r.off{color:var(--accent);animation:tick 2.4s steps(1) infinite}
+@keyframes tick{50%{transform:translateY(-3px)}}
+h1{font:800 clamp(30px,6vw,46px)/1.05 "Archivo",Arial,sans-serif;font-stretch:118%;margin:0;text-wrap:balance}
+p{margin:0;color:var(--muted);max-width:44ch}
+code{font:14px "JetBrains Mono",ui-monospace,monospace;color:var(--ink);background:var(--panel);border:1px solid var(--line);padding:2px 8px;border-radius:6px;overflow-wrap:anywhere}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+a.btn{display:inline-flex;align-items:center;min-height:46px;padding:10px 18px;border-radius:999px;font-weight:600;text-decoration:none;border:1px solid var(--accent);background:var(--accent);color:#1A0B07}
+a.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+a.btn:hover{transform:translateY(-2px)}a.btn{transition:transform .2s}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+  <div class="rotors" aria-hidden="true"><span class="r">4</span><span class="r off">0</span><span class="r">4</span></div>
+  <h1>This page got scrambled</h1>
+  <p>Nothing lives at <code id="path">this address</code>. It may have moved, or the link has a typo.</p>
+  <div class="ctas"><a class="btn" href="/">Back to the portfolio</a><a class="btn ghost" href="/#work">See my projects</a></div>
+</main>
+<script>{const el=document.getElementById('path');if(location.pathname&&location.pathname!=='/')el.textContent=location.pathname;}</script>
+</body>
+</html>
